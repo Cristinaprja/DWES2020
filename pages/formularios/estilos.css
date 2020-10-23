@@ -1,0 +1,10 @@
+.error{
+    border: 1px solid red;
+    background-color: red;
+    color: white;   
+}
+.correcta{
+    border: 1px solid green;
+    background-color: green;
+    color:white
+}

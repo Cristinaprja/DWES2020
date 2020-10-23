@@ -1,0 +1,73 @@
+header h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+header li {
+    list-style: none;
+    text-align: center;
+}
+header a {
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius:50px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#menu{
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px
+}
+main div a {
+    text-decoration: none;
+}
+main a:hover{
+    background-color: lightblue;
+    color: black;
+}
+#ejercicio {
+    border: 1px solid black;
+}
+#enlace{
+    text-align: center;
+    margin-left: 15px;
+    padding: 25px;
+}
+#enlace button{
+    background-color: black;
+    border-radius: 2px;
+    color: white;
+}
+#enlace a{
+    text-decoration: none;
+    color: white;
+}
+#enlace button:visited{
+    background-color: black;
+    border-radius: 2px;
+    color: white;
+}
+footer div {
+    display: flex;
+    align-items: center;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    border: 1px solid black;
+}
+footer section {
+    display: flex;
+    justify-content: space-around;
+}
+footer a:hover{
+    transform:scale(1.25);
+    transition: 0.3s;
+}
