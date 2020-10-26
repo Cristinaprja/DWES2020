@@ -52,9 +52,6 @@
                         break;
                     }
                 }
-                if($_GET["page"]=="calculaletra" && $_GET["dni"]){
-                    include_once "calculaletra.php";
-                }
             echo "</div>";
             echo "<div id=\"enlace\">";
                 echo "<button><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/funciones\">Enlace GitHub</a>";
