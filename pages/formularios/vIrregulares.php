@@ -101,15 +101,12 @@ if(isset($_POST["enviar"])){
     switch($dificultad){
         case 1:
             $huecos = 1;
-            $numVerbos = 4;
         break;
         case 2:
             $huecos = 2;
-            $numVerbos = 6;
         break;
         case 3:
             $huecos = 3;
-            $numVerbos = 8;
         break;
     }
     echo "<form action=\"index.php?page=vIrregulares\" method=\"post\">";
