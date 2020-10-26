@@ -11,6 +11,16 @@
 echo "<p>Introduce por la URL tu dni de la siguiente manera:</p>";
 echo "<p>http://localhost/pages/funciones/index.php?page=calculaletra&dni=30182410.</p>";
 
+/**
+ * Devuelve un mensaje u otro dependiendo de si la letra introducida en el dni es la correcta
+ * 
+ * Mediante manejo de cadenas obtenemos el $num (parte numérica del dni) y $letra (letra introducida del dni).
+ * Hacemos los cálculos para obtener cual es la letra correcta que corresponde a una posicion de $letrasDNI.
+ * Comparamos $letra con $letraCorrecta y devolvemos un mensaje
+ * 
+ * @param cadena
+ * @return mensaje
+ */
 function calculaletra($cadena){
     echo "DNI introducido: ".$cadena."<br>";
     $letrasDNI = array("T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E");
