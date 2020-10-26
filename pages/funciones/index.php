@@ -18,7 +18,7 @@
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
                         echo "<a href=\"index.php\"><h2>FUNCIONES</h2></a>";
-                        // echo "<p><a href='index.php?page=calculaletra'>Calcular letra DNI</a></p>";
+                        echo "<p><a href='index.php?page=calculaletra'>Calcular letra DNI</a></p>";
                         echo "<p><a href='index.php?page=factoriza'>Factoriza</a></p>";
                         echo "<p><a href='index.php?page=usuarios'>Generación de usuarios</a></p>";
                         echo "<p><a href='index.php?page=sumaRecursiva'>Suma recursiva</a></p>";
@@ -30,10 +30,10 @@
                 echo "<p><b>Ejercicio : </b>";
                 if(isset($_GET["page"])){
                     switch($_GET["page"]){
-                        // case "calculaletra":
-                        //     echo "Calcular letra DNI</p>";
-                        //     include "calculaletra.php";
-                        // break;
+                        case "calculaletra":
+                            echo "Calcular letra DNI</p>";
+                            include "calculaletra.php";
+                        break;
                         case "factoriza":
                             echo "Factoriza</p>";
                             include "factoriza.php";
@@ -52,23 +52,8 @@
                         break;
                     }
                 }
-                if($_GET["dni"]){
-                    function calculaletra($cadena){
-                        echo "DNI introducido: ".$cadena."<br>";
-                        $letrasDNI = array("T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E");
-                        $num = intval(substr($cadena, 0, 8));
-                        $letra = strtoupper(substr($cadena, 8, 9));
-                        $posicionLetra = $num%23;
-                        $letraCorrecta = $letrasDNI[$posicionLetra];
-                        return ($letraCorrecta == $letra) ? "La letra introducida es correcta" : "LETRA ERRONEA. Letra  es correcta :".$letraCorrecta;
-                    }
-                    $dni = $_GET["dni"];
-                    if(strlen($dni) != 9){
-                        echo "Longitud DNI Incorrecta";
-                    }else{
-                        echo calculaletra($dni);
-                    }
-                    
+                if($_GET["page"]=="calculaletra" && $_GET["dni"]){
+                    include_once "calculaletra.php";
                 }
             echo "</div>";
             echo "<div id=\"enlace\">";
