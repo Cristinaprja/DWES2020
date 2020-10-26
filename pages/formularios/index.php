@@ -18,7 +18,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                        echo "<h3>Formularios</h3>";
+                    echo "<a href=\"index.php\"><h2>FORMULARIOS</h2></a>";;
                         echo "<p><a href='index.php?page=calendario1'>Calendario con festivos autonómicos</a></p>";
                         echo "<p><a href='index.php?page=curriculum1'>Curriculum</a></p>";
                         echo "<p><a href='index.php?page=continentes'>Formulario con los paises de los continentes</a></p>";
@@ -55,7 +55,7 @@
                 }
             echo "</div>";
             echo "<div id=\"enlace\">";
-                echo "<button><a href=\"\">Enlace GitHub</a></button>";
+                echo "<button><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/formularios\">Enlace GitHub</a></button>";
             echo "</div>";
         ?>
     </main>

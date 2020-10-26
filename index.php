@@ -28,6 +28,9 @@
         <div id="menu"><a href="pages/formularios/index.php">Formularios<br>
             <img src="images/formulario.png" width="150px"></img></a>
         </div>
+        <div id="menu"><a href="pages/funciones/index.php">Funciones<br>
+            <img src="images/funciones.png" width="150px"></img></a>
+        </div>
     </main>
     <br>
     <footer>

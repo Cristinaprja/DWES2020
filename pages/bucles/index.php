@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                        echo "<h3>Bucles</h3>";
+                        echo "<a href=\"index.php\"><h2>BUCLES</h2></a>";
                         echo "<p><a href='index.php?page=num1al10'>Escribir los números del 1 al 10</a></p>";
                         echo "<p><a href='index.php?page=primerosPares'>Sumar los 3 primeros números pares</a></p>";
                         echo "<p><a href='index.php?page=tablaMult'>Tabla de multiplicar de 1 al 10</a></p>";
@@ -63,9 +63,9 @@
                     }
                 }
             echo "</div>";
-            // echo "<div id=\"enlace\">";
-            //     echo "<p><a href=\"\">Enlace GitHub</a>";
-            // echo "</div>";
+            echo "<div id=\"enlace\">";
+                echo "<p><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/bucles\">Enlace GitHub</a>";
+            echo "</div>";
         ?>
     </main>
     <br>

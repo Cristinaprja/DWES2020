@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                        echo "<h3>Estructuras de control</h3>";
+                    echo "<a href=\"index.php\"><h2>ESTRUCTURAS DE CONTROL</h2></a>";
                         echo "<p><a href='index.php?page=mayorDosNum'>Mayor de dos números</a></p>";
                         echo "<p><a href='index.php?page=diasMes'>Días del mes</a></p>";
                         echo "<p><a href='index.php?page=calcularEdad'>Calcular edad</a></p>";
@@ -52,6 +52,9 @@
                         break;
                     }
                 }
+            echo "</div>";
+            echo "<div id=\"enlace\">";
+                echo "<button><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/estructurasControl\">Enlace GitHub</a></button>";
             echo "</div>";
         ?>
     </main>

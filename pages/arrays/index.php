@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                        echo "<h3>Arrays</h3>";
+                        echo "<a href=\"index.php\"><h2>ARRAYS</h2></a>";
                         echo "<p><a href='index.php?page=portfoliocss'>Portfolio con array</a></p>";
                         echo "<p><a href='index.php?page=mesAnnyo'>Meses del año</a></p>";
                         echo "<p><a href='index.php?page=barcos'>Juego de los barcos</a></p>";
@@ -55,8 +55,13 @@
                             echo "Información sobre continentes</p>";
                             include "continentes.php";
                         break;
+                        echo "<div id=\"enlace\">";
+                        e
                     }
                 }
+            echo "</div>";
+            echo "<div>";
+                echo "<p><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/arrays\">Enlace GitHub</a>";
             echo "</div>";
         ?>
     </main>

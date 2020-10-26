@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='basicos.php' method='post'>";
-                        echo "<h3>Ejercicios básicos</h3>";
+                        echo "<a href=\"index.php\"><h2>BÁSICOS</h2></a>";
                         echo "<p><a href='index.php?page=holaMundo'>Hola Mundo</a></p>";
                         echo "<p><a href='index.php?page=basico1'>Ficha personal</a></p>";
                         echo "<p><a href='index.php?page=basico2'>Área del círculo</a></p>";
@@ -67,6 +67,9 @@
                         break;
                     }
                 }
+            echo "</div>";
+            echo "<div>";
+                echo "<p><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/basicos\">Enlace GitHub</a>";
             echo "</div>";
         ?>
     </main>
