@@ -64,7 +64,7 @@
                 }
             echo "</div>";
             echo "<div id=\"enlace\">";
-                echo "<p><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/bucles\">Enlace GitHub</a>";
+                echo "<button><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/bucles\">Enlace GitHub</a></button>";
             echo "</div>";
         ?>
     </main>
