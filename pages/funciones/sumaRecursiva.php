@@ -5,6 +5,9 @@
  * 26/10/2020
  */
 
+echo "<p>Introduce por la URL un número para podersumarlo, hazlo de la siguiente manera:</p>";
+echo "<p>http://localhost/pages/funciones/index.php?page=calculaletra&numero=26.</p>";
+
 $sumaDigitos = 0;
 function sumaRecursiva($numeros){
     if(strlen($numeros)<2){
@@ -15,6 +18,8 @@ function sumaRecursiva($numeros){
         return $ultimoDigito + sumaRecursiva($numeros);
     }
 }
-$numeros = $_GET["numero"];
-echo "La suma de los dígitos del número $numeros es:".sumaRecursiva($numeros);
+if(isset($_GET["numero"])){
+    $numeros = $_GET["numero"];
+    echo "La suma de los dígitos del número $numeros es:".sumaRecursiva($numeros);
+}
 ?>

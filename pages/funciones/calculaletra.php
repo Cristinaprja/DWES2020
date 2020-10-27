@@ -30,10 +30,13 @@ function calculaletra($cadena){
     $letraCorrecta = $letrasDNI[$posicionLetra];
     return ($letraCorrecta == $letra) ? "La letra introducida es correcta" : "LETRA ERRONEA. Letra  es correcta :".$letraCorrecta;
 }
-$dni = $_GET["dni"];
-if(strlen($dni) != 9){
-    echo "Longitud DNI Incorrecta";
-}else{
-    echo calculaletra($dni);
+if(isset($_GET["dni"])){
+    $dni = $_GET["dni"];
+    if(strlen($dni) != 9){
+        echo "Longitud DNI Incorrecta";
+    }else{
+        echo calculaletra($dni);
+    }
 }
+
 ?>
