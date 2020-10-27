@@ -18,6 +18,7 @@ $arrayTrabajos = array(
     array("titulo" =>"Sitio web con JavaScript", "descripcion" => "Cupcake ipsum dolor. Sit amet sweet roll jelly beans cheesecake halvah I love biscuit candy. Sugar plum donut macaroon tootsie roll jelly-o soufflé cupcake. Candy tiramisu cheesecake carrot cake donut candy canes. I love carrot cake jelly-o cotton candy lollipop tootsie roll.")
 );
 function mostrarParrafos($array){
+    echo "Mostrando todos los trabajos";
     echo "<section>";
     echo "<ul>";
     foreach($array as $key => $value){
@@ -26,4 +27,12 @@ function mostrarParrafos($array){
     echo "</ul>";
     echo "</section>";
 }
-mostrarParrafos($arrayTrabajos);
+// mostrarParrafos($array);
+function mostrarUnTrabajo($array){
+    echo "<p>Mostrando un trabajo</p>";
+    $numRamdon = rand(0, sizeof($array)-1);
+    foreach($array[$numRamdon] as $trabajo ){
+        echo $trabajo."<br>";
+    }
+}
+mostrarUnTrabajo($arrayTrabajos);
