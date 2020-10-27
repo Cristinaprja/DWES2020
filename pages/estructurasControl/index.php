@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                    echo "<a href=\"index.php\"><h2>ESTRUCTURAS DE CONTROL</h2></a>";
+                    echo "<h2>ESTRUCTURAS DE CONTROL</h2>";
                         echo "<p><a href='index.php?page=mayorDosNum'>Mayor de dos números</a></p>";
                         echo "<p><a href='index.php?page=diasMes'>Días del mes</a></p>";
                         echo "<p><a href='index.php?page=calcularEdad'>Calcular edad</a></p>";

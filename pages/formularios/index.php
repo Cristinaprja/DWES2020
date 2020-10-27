@@ -18,7 +18,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                    echo "<a href=\"index.php\"><h2>FORMULARIOS</h2></a>";;
+                    echo "<h2>FORMULARIOS</h2>";
                         echo "<p><a href='index.php?page=calendario1'>Calendario con festivos autonómicos</a></p>";
                         echo "<p><a href='index.php?page=curriculum1'>Curriculum</a></p>";
                         echo "<p><a href='index.php?page=continentes'>Formulario con los paises de los continentes</a></p>";

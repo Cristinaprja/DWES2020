@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                        echo "<a href=\"index.php\"><h2>BUCLES</h2></a>";
+                        echo "<h2>BUCLES</h2>";
                         echo "<p><a href='index.php?page=num1al10'>Escribir los números del 1 al 10</a></p>";
                         echo "<p><a href='index.php?page=primerosPares'>Sumar los 3 primeros números pares</a></p>";
                         echo "<p><a href='index.php?page=tablaMult'>Tabla de multiplicar de 1 al 10</a></p>";

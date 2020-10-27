@@ -9,7 +9,8 @@
 <body>
     <header>
         <?php
-            include "include/header.php";
+            // include "include/header.php";
+            echo "<h1>Cristina Prieto Jalao - Ejercicios 2DAW DWES</h1>";
         ?>
     </header>
     <main id="inicio">

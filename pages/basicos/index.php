@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='basicos.php' method='post'>";
-                        echo "<a href=\"index.php\"><h2>BÁSICOS</h2></a>";
+                        echo "<h2>BÁSICOS</h2>";
                         echo "<p><a href='index.php?page=holaMundo'>Hola Mundo</a></p>";
                         echo "<p><a href='index.php?page=basico1'>Ficha personal</a></p>";
                         echo "<p><a href='index.php?page=basico2'>Área del círculo</a></p>";
@@ -29,7 +29,7 @@
                     echo "</form>";
                 echo "</div>";
             echo "</div>";
-                echo "<div id='ejercicio'>";
+            echo "<div id='ejercicio'>";
                 echo "<p><b>Ejercicio : </b>";
                 if(isset($_GET["page"])){
                     switch($_GET["page"]){
