@@ -1,3 +1,3 @@
 <?php
-    echo '<p>Bienvenido</p>';
+    echo "<p class='text-center'><b>Bienvenido</b></p>";
 ?>   

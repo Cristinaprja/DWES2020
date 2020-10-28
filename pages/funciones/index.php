@@ -17,7 +17,7 @@
             echo "<div id='listado'>";
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
-                        echo "><h2>FUNCIONES</h2>";
+                        echo "<h2>FUNCIONES</h2>";
                         echo "<p><a href='index.php?page=calculaletra'>Calcular letra DNI</a></p>";
                         echo "<p><a href='index.php?page=factoriza'>Factoriza</a></p>";
                         echo "<p><a href='index.php?page=usuarios'>Generación de usuarios</a></p>";

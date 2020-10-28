@@ -50,9 +50,9 @@ class Usuario extends DBAbstractModel{
             $$campo = $valor;
         }
         $this->query = "UPDATE alumnos SET fecha_baja=:fecha_baja, fecha_alta=:fecha_alta, d_responsable=:d_responsable, 
-        observaciones=:observaciones WHERE  id=:id ";//control_hash=:control_hash
-        //$this->parametros['control_hash']= $control_hash;
-        $this->parametros['id']= $id;
+        observaciones=:observaciones WHERE  control_hash=:control_hash  ";// id=:id
+        $this->parametros['control_hash']= $control_hash;
+        //$this->parametros['id']= $id;
         $this->parametros['fecha_baja']= $fecha_baja;
         $this->parametros['fecha_alta']= $fecha_alta;
         $this->parametros['d_responsable']=$d_responsable;
@@ -91,5 +91,18 @@ class Usuario extends DBAbstractModel{
         $this->close_connection();
         return $this->rows;
     }  
+
+    /**Función para mostrar ultimos alumnos */
+
+    public function obtenerCincoUltimos(){
+        $this->query = "SELECT * 
+                FROM alumnos
+                ORDER BY fecha_actual DESC
+                LIMIT 5";
+        $this->get_results_from_query();
+        $this->close_connection();
+        return $this->rows;
+    }
+    
 }
 ?>

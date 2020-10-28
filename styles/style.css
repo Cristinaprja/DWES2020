@@ -3,14 +3,16 @@ header h1 {
     text-decoration: underline;
 }
 header ul{
+    display: flex;
+    justify-content: start;
     border: 1px solid black;
     padding: 15px;
+    flex-wrap: wrap;
+    line-height : 35px;
 }
 header li {
-    display: inline; /* the default for span */
-    width: 100px;
-    height: 100px;
-    padding: 5px; 
+    list-style: none;
+    padding: 5px;  
 }
 header a {
     text-decoration: none;
@@ -21,8 +23,12 @@ header a {
     padding: 10px;
 }
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+main div{
+    width: 40vw;
 }
 #menu{
     text-align: center;
@@ -58,6 +64,11 @@ main a:hover{
     text-decoration: none;
     color: white;
 }
+#enlace a:hover{
+    background-color: black;
+    border-radius: 2px;
+    color: white;
+}
 #enlace button:visited{
     background-color: black;
     border-radius: 2px;
@@ -68,9 +79,9 @@ footer div {
     align-items: center;
 }
 footer{
-    position: absolute;
-    bottom: 0;
-    width: 95%;
+    display: flex;
+    justify-content: start;
+    padding: 10px;
     border: 1px solid black;
 }
 footer section {

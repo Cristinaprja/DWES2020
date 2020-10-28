@@ -27,7 +27,8 @@ function mostrarParrafos($array){
     echo "</ul>";
     echo "</section>";
 }
-// mostrarParrafos($array);
+mostrarParrafos($arrayTrabajos);
+
 function mostrarUnTrabajo($array){
     echo "<p>Mostrando un trabajo</p>";
     $numRamdon = rand(0, sizeof($array)-1);

@@ -45,6 +45,9 @@
                 include "include/logout.php";
             }?>
 		</header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <?php include "include/nav.php" ?>
+        </nav>
             <main>
                 <?php
                     if (isset($_GET["page"])){

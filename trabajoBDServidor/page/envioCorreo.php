@@ -9,7 +9,7 @@
     if(!($_SESSION["logged"] )){
 
         echo "<p class='text-center'><b>Formulario de Edición</b></p>";
-        echo "<form class='form-horizontal' style='margin:0 auto' action='index.php?page=envioCorreo&id=".$_GET["id"]."' method='post'><br/>";
+        echo "<form class='form-horizontal' style='margin:0 auto' action='index.php?page=envioCorreo&control_hash=".$_GET["control_hash"]."' method='post'><br/>"; //action='index.php?page=envioCorreo&hash=".$_GET["hash_control"]."'
             echo "<div class='form-group'>";
                 echo "<label class='col-lg-4' >Fecha de Alta:</label>";
                 echo "<div class='col-lg-5'>";
@@ -39,8 +39,8 @@
             }
 
             $datos_alumno = array(
-                //'control_hash'=> $_SESSION["user"]->getHashbyId($_GET["id"])[0]["control_hash"],
-                'id'=> $_GET["id"],
+                'control_hash'=> $_SESSION["user"]->getHashbyId($_GET["id"])[0]["control_hash"],
+                //'id'=> $_GET["id"],
                 'fecha_alta'=>limpiarDatos($_POST['fecha_alta']),
                 'fecha_baja'=>limpiarDatos($_POST['fecha_baja']),
                 'd_responsable'=>$responsable,
@@ -52,7 +52,7 @@
         
     } 
     else{
-        echo "<form class='form-group' action='index.php?page=envioCorreo&id=".$_GET["id"]."' method=\"post\">";
+        echo "<form class='form-group' action='index.php?page=envioCorreo&control_hash=".$_GET["control_hash"]."'' method=\"post\">"; //action='index.php?page=envioCorreo&hash=".$_GET["hash_control"]."'
             echo "<br/><br/>";
             echo "<div class='text-center' ";
                 echo "<label >Correo Electrónico: <input type='email' name='correo'></label>";
@@ -67,8 +67,7 @@
             $mail->FromName = 'Secretaria Virtual Gran Capitán';
             $mail->Subject = "Claves firma acceso Secretaria Virtual";
             $mail->addAddress($_POST["correo"],'');
-            $mail->msgHTML("<a href='http://localhost/trabajoBDServidor/index.php?page=envioCorreo&id=".$_GET["id"]."'>Acceso a formulario</a>
-            Su método para loguearse es introduciendo el siguiente código.<b>".$_SESSION["user"]->getHashbyId($_GET["id"])[0]["control_hash"]."</b>");
+            $mail->msgHTML("<a href='http://localhost/daw2021/trabajoBD/index.php?page=envioCorreo&control_hash=".$_GET["control_hash"]."'>Acceso a formulario</a>");
     
             if($mail->send()){
                 echo "Se ha enviado el email";
