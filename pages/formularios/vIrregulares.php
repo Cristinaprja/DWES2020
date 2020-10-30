@@ -8,7 +8,6 @@ session_start();
 $crearArray = false;
 if(!isset($_SESSION["arrayCreado"])){
     $_SESSION["arrayComprobacion"] = array();
-    $crearArray = true;
 }
 $_SESSION["arrayCreado"] = true;
 $arrayVerbos = array (
@@ -90,24 +89,26 @@ $arrayVerbos = array (
     array("ganar","win","won","won"),
     array("escribir","write","wrote","written"));
 $tiemposV = array("Español", "Present Simple", "Past Simple", "Past Participle");
-if($crearArray){
-    for($i=0; $i<4; $i++){
-        $verboRandom = random_int(0,sizeof($arrayVerbos)-1);
-        array_push($_SESSION["arrayComprobacion"], $arrayVerbos[$verboRandom]);
-    }
-}
+
 if(isset($_POST["enviar"])){
     $dificultad = $_POST["dificultad"];
     switch($dificultad){
         case 1:
             $huecos = 1;
+            $numVerbos = 4;
         break;
         case 2:
             $huecos = 2;
+            $numVerbos = 6;
         break;
         case 3:
             $huecos = 3;
+            $numVerbos = 8;
         break;
+    }
+    for($i=0; $i<$numVerbos; $i++){
+        $verboRandom = random_int(0,sizeof($arrayVerbos)-1);
+        array_push($_SESSION["arrayComprobacion"], $arrayVerbos[$verboRandom]);
     }
     echo "<form action=\"index.php?page=vIrregulares\" method=\"post\">";
     echo "<table border=\"1px solid black\">";
@@ -116,7 +117,7 @@ if(isset($_POST["enviar"])){
         echo "<th>$tiempo</th>";
     }
     echo "</tr>";
-    for($i=0; $i<4; $i++){
+    for($i=0; $i<$numVerbos; $i++){
         echo "<tr>";
         $arrayRandom = array();
         $h=0;
@@ -158,9 +159,9 @@ if(isset($_POST["corregir"])){
         echo "<th>$tiempo</th>";
     }
     echo "</tr>";
-    for($i=0; $i<4; $i++){
+    for($i=0; $i<$numVerbos; $i++){
         echo "<tr>";
-        for($j=0; $j<4; $j++){
+        for($j=0; $j<$numVerbos; $j++){
             if(!empty($_POST["verbo"][$i][$j])){
                 foreach($_POST["verbo"] as $indiceV => $value){
                     foreach($value as $indice => $resp){
@@ -184,11 +185,6 @@ if(isset($_POST["corregir"])){
     if($existeError){
         echo "<input type=\"submit\" name=\"corregir\" value=\"Corregir\"/>";
     }
-    //?????????????????????????????
-    // else{
-    //     header("Location:index.php?page=vIrregulares");
-    // }
-    ////////////////////////////
     echo "</form>";
 }
 ?>
