@@ -22,21 +22,19 @@ echo "<p>http://localhost/pages/funciones/index.php?page=calculaletra&dni=301824
  * @return mensaje
  */
 function calculaletra($cadena){
-    echo "DNI introducido: ".$cadena."<br>";
     $letrasDNI = array("T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E");
     $num = intval(substr($cadena, 0, 8));
     $letra = strtoupper(substr($cadena, 8, 9));
     $posicionLetra = $num%23;
     $letraCorrecta = $letrasDNI[$posicionLetra];
-    return ($letraCorrecta == $letra) ? "La letra introducida es correcta" : "LETRA ERRONEA. Letra  es correcta :".$letraCorrecta;
+    return ($letraCorrecta == $letra) ? true : false;
 }
 if(isset($_GET["dni"])){
     $dni = $_GET["dni"];
     if(strlen($dni) != 9){
         echo "Longitud DNI Incorrecta";
     }else{
-        echo calculaletra($dni);
+        (calculaletra($dni)) ? "La letra intoducida es correcta" : "LETRA ERRONEA";
     }
 }
-
 ?>

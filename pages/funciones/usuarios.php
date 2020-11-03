@@ -36,10 +36,15 @@ echo "Los usuarios creados son:";
  * Función anónima para crear usuarios
  */
 $creacionUsuarios = function($array){
+    $arrayUsuarios = array();
     foreach($array as $key => $value){
         $usuario = substr(strtolower(normaliza($value["apellido1"])), 0, 2). substr(strtolower(normaliza($value["apellido2"])), 0, 2).substr(strtolower(normaliza($value["nombre"])), 0 ,1) ;
         echo $usuario.", ";
+        array_push($arrayUsuarios, $usuario);
     }
+    return $arrayUsuarios;
 };
-$creacionUsuarios($aUsuarios);
+foreach($creacionUsuarios($aUsuarios) as $usu){
+    echo $usu." ,";
+};
 ?>

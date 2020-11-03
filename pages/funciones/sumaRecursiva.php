@@ -10,7 +10,7 @@ echo "<p>http://localhost/pages/funciones/index.php?page=calculaletra&numero=26.
 
 $sumaDigitos = 0;
 function sumaRecursiva($numeros){
-    if(strlen($numeros)<2){
+    if($numeros<10){
         return $numeros;
     }else{
         $ultimoDigito = $numeros%10;

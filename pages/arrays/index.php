@@ -61,7 +61,7 @@
                 }
             echo "</div>";
             echo "<div>";
-                echo "<p><a href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/arrays\">Enlace GitHub</a>";
+                echo "<p><a target=\"_blank\" href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/arrays\">Enlace GitHub</a>";
             echo "</div>";
         ?>
     </main>
