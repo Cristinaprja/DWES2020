@@ -32,6 +32,12 @@
         <div id="menu"><a href="pages/funciones/index.php">Funciones<br>
             <img src="images/funciones.png" width="150px"></img></a>
         </div>
+        <div id="menu"><a href="pages/cookies/index.php">Cookies<br>
+            <img src="images/cookies.jpg" width="150px"></img></a>
+        </div>
+        <div id="menu"><a href="pages/sesiones/index.php">Sesiones<br>
+            <img src="images/sesiones.png" width="150px"></img></a>
+        </div>
     </main>
     <br>
     <footer>

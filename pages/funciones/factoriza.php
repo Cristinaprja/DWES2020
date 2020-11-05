@@ -12,6 +12,7 @@ echo "<p>http://localhost/pages/funciones/index.php?page=calculaletra&numero=26.
  * @param numero 
  */
 function factoriza($numero){
+    //meter en un array los factores
     for($i=2; $i<=$numero; $i++){
         while($numero % $i==0){
             echo ($numero." | ".$i."<br>");
