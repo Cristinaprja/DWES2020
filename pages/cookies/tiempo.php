@@ -9,7 +9,7 @@
 echo "<form action=\"index.php?page=tiempo\" method=\"post\">";
 echo "<button name=\"tiempoTranscurrido\">Tiempo Transcurrido</button></p>";
 echo "</form>";
-$primerAcceso = getdate();
+$primerAcceso = getdate(s);
 $segundosInicio = $primerAcceso[0];
 
 setcookie("tiempoInicio", $segundosInicio, time()+3600);
@@ -17,6 +17,7 @@ echo $_COOKIE["tiempoInicio"];
 
 if (isset($_POST["tiempoTranscurrido"])) {
     setCookie("tiempoActual", getdate()[0], time()+3600);
-    echo "Tiempo :".($_COOKIE["tiempoInicio"]-$_COOKIE["tiempoActual"]);
+    echo "inicio".$_COOKIE["tiempoInicio"];
+    // echo "Tiempo :".($_COOKIE["tiempoInicio"]-$_COOKIE["tiempoActual"]);
 }
 ?>

@@ -4,13 +4,14 @@
  * @author Cristina Prieto Jalao
  * 03/11/2020
  */
-
-if(isset($_COOKIE['visitas'])){
-    setcookie('visitas',$_COOKIE['visitas']+1,time()+3600*24);
-    $mensaje = 'Numero de visitas: '.$_COOKIE['visitas'];   
+$mensaje ="";   
+if(!isset($_COOKIE['visitas'])){
+    setcookie('visitas', 0, time()+4);
+    $mensaje = "Primera visita";
 }else{
-    setcookie('visitas',1,time()+3600*24);
-    $mensaje = 'Bienvenido por primera vez a nuesta web';
+    $_COOKIE["visitas"]++;
+    setcookie('visitas', $_COOKIE["visitas"]++, time()+4);
+    $mensaje = 'Numero de visitas: '.$_COOKIE['visitas'];
 }
 echo $mensaje;
 ?>

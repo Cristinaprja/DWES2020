@@ -8,5 +8,6 @@ echo "<ul>
         <li><a href='/pages/formularios/index.php'>Formularios</a></li>
         <li><a href='/pages/funciones/index.php'>Funciones</a></li>
         <li><a href='/pages/cookies/index.php'>Cookies</a></li>
+        <li><a href='/pages/sesiones/index.php'>Sesiones</a></li>
     </ul>";
 ?>
