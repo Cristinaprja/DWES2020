@@ -67,9 +67,8 @@ function mostrarContactos($array){
     echo "</table>";
 }
 if(isset($_POST["eliminarContacto"])){
-    echo "Contacto eliminado";
-    // print_r($_SESSION["arrayContactos"][$_POST["posicion"]]);
     unset($_SESSION["arrayContactos"][$_POST["posicion"]]);
+    echo "Contacto eliminado";
 }
 if(isset($_POST["buscar"])){
     $resultadoBusqueda = array();
