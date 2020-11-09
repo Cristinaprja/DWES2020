@@ -123,7 +123,31 @@ if(isset($_POST["nuevoAlumno"])){
 if(isset($_POST["enviarForm"])){
     echo "enviado";
     unset($_POST["Enviar"]);
-    $alumno = new Alumno($_POST);
+    $arrayNuevoAlumno = array(
+        "nombre" => $_POST["nombre"],
+        "apellidos" => $_POST["apellidos"],
+        "notas" => array(
+            "trimestre1" => array(
+                "examen1" => $_POST["t1examen1"],
+                "examen2" => $_POST["t1examen2"],
+                "examen3" => $_POST["t1examen3"],
+                "examenFinal" => $_POST["t1examenFinal"],
+            ),
+            "trimestre2" => array(
+                "examen1" => $_POST["t2examen1"],
+                "examen2" => $_POST["t2examen2"],
+                "examen3" => $_POST["t2examen3"],
+                "examenFinal" => $_POST["t2examenFinal"],
+            ),
+            "trimestre3" => array(
+                "examen1" => $_POST["t3examen1"],
+                "examen2" => $_POST["t3examen2"],
+                "examen3" => $_POST["t3examen3"],
+                "examenFinal" => $_POST["t3examenFinal"],
+            ),
+        )
+    );
+    $alumno = new Alumno($arrayNuevoAlumno);
     $alumno->agregarAlumno();
 }
 
