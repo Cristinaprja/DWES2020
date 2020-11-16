@@ -16,7 +16,7 @@ for($i=1; $i<13; $i++){
     echo "<option value=\"$i\">$i</option>";
 }
 echo "</p></select>";
-echo "<p> Año :<input name=\"annyoElegido\" type=\"number\" min=\"1900\" max=\"2100\"></p>";
+echo "<p> Año :<input name=\"annyoElegido\" type=\"number\" min=\"1900\" max=\"2100\" required/s></p>";
 echo "<input type=\"submit\" name=\"subir\" value=\"Enviar\">";
 echo "</form>";
 echo "</br>";

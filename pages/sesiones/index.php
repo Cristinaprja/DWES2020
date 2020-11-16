@@ -21,6 +21,7 @@
                     echo "<h2>SESIONES</h2>";
                         echo "<p><a href='index.php?page=contactos'>Agenda de contactos</a></p>";
                         echo "<p><a href='index.php?page=modulo'>Gestión académica</a></p>";
+                        echo "<p><a href='index.php?page=calendario1'>Calendario</a></p>";
                         echo "<p><a href='index.php?page=buscaminas'>Buscaminas</a></p>";
                     echo "</form>";
                 echo "</div>";
@@ -36,6 +37,10 @@
                         case "modulo":
                             echo "Gestión académica</p>";
                             include "modulo.php";
+                        break;
+                        case "calendario1":
+                            echo "Calendario</p>";
+                            include "calendario1.php";
                         break;
                         case "buscaminas":
                             echo "Buscaminas</p>";
