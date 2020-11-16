@@ -9,5 +9,6 @@ echo "<ul>
         <li><a href='/pages/funciones/index.php'>Funciones</a></li>
         <li><a href='/pages/cookies/index.php'>Cookies</a></li>
         <li><a href='/pages/sesiones/index.php'>Sesiones</a></li>
+        <li><a href='/pages/autentificacion/index.php'>Autentificación</a></li>
     </ul>";
 ?>

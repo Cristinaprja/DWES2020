@@ -38,6 +38,9 @@
         <div id="menu"><a href="pages/sesiones/index.php">Sesiones<br>
             <img src="images/sesiones.png" width="150px"></img></a>
         </div>
+        <div id="menu"><a href="pages/autentificacion/index.php">Autentificación<br>
+            <img src="images/autentificacion.png" width="150px"></img></a>
+        </div>
     </main>
     <br>
     <footer>
