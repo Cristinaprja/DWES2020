@@ -40,7 +40,7 @@
                 }
             echo "</div>";
             echo "<div id=\"enlace\">";
-                echo "<button><a target=\"_blank\" href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/formularios\">Enlace GitHub</a></button>";
+                echo "<button><a target=\"_blank\" href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/autentificacion\">Enlace GitHub</a></button>";
             echo "</div>";
         ?>
     </main>
