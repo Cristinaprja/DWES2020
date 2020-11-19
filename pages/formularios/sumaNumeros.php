@@ -21,6 +21,7 @@ if(isset($_POST["enviar"])){
     echo "<input type=\"submit\" name=\"enviar\" value=\"Enviar\">";
     echo "</form>";
 }
+
 if(isset($_POST["sumar"])){
     foreach($_POST["numeros"] as $numero){
         $sumatorio+=$numero;
