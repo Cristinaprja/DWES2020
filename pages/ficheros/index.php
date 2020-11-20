@@ -18,6 +18,7 @@
                 echo "<div>";
                     echo "<form action='index.php' method='post'>";
                     echo "<h2>FORMULARIOS</h2>";
+                    echo "<p><a href='index.php?page=subida'>Subida de Ficheros</a></p>";
                         echo "<p><a href='index.php?page=usuarios'>Creación de usuarios</a></p>";
                         echo "<p><a href='index.php?page=galeria'>Galeria imágenes</a></p>";
                     echo "</form>";
@@ -27,6 +28,10 @@
                 echo "<p><b>Ejercicio : </b>";
                 if(isset($_GET["page"])){
                     switch($_GET["page"]){
+                        case "subida":
+                            echo "Subida de ficheros</p>";
+                            include "subida.php";
+                        break;
                         case "usuarios":
                             echo "Creación de usuarios</p>";
                             include "usuarios.php";
@@ -39,7 +44,7 @@
                 }
             echo "</div>";
             echo "<div id=\"enlace\">";
-                echo "<button><a target=\"_blank\" href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/formularios\">Enlace GitHub</a></button>";
+                echo "<button><a target=\"_blank\" href=\"https://github.com/Cristinaprja/DWES2020/tree/master/pages/ficheros\">Enlace GitHub</a></button>";
             echo "</div>";
         ?>
     </main>
