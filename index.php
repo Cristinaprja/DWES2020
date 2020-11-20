@@ -41,6 +41,9 @@
         <div id="menu"><a href="pages/autentificacion/index.php">Autentificación<br>
             <img src="images/autentificacion.png" width="150px"></img></a>
         </div>
+        <div id="menu"><a href="pages/ficheros/index.php">Ficheros<br>
+            <img src="images/ficheros.png" width="150px"></img></a>
+        </div>
     </main>
     <br>
     <footer>
