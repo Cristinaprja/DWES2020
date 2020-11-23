@@ -27,6 +27,5 @@ if (isset($_GET['fila'])) {
 	$colEntrada = $_GET['columna'];
 	$_SESSION["tablero"] = clickCasilla($_SESSION["tablero"], $filEntrada, $colEntrada, $FILAS, $COLUMNAS, $BOMBAS);
 }
-imprimirTablero($_SESSION["tablero"]);
 imprimirTableroJuego($_SESSION["tablero"], $FILAS, $COLUMNAS);
 ?>
