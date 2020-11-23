@@ -14,17 +14,17 @@
     </header>
     <main>
         <?php
-            echo "<div id='listado'>";
+            echo "<div id=\"listado\">";
                 echo "<div>";
-                    echo "<form action='index.php' method='post'>";
-                    echo "<h2>FORMULARIOS</h2>";
-                    echo "<p><a href='index.php?page=subida'>Subida de Ficheros</a></p>";
-                        echo "<p><a href='index.php?page=usuarios'>Creación de usuarios</a></p>";
-                        echo "<p><a href='index.php?page=galeria'>Galeria imágenes</a></p>";
+                    echo "<form action=\"index.php\" method=\"post\">";
+                    echo "<h2>FICHEROS</h2>";
+                    echo "<p><a href=\"index.php?page=subida\">Subida de Ficheros</a></p>";
+                        echo "<p><a href=\"index.php?page=usuarios\">Creación de usuarios</a></p>";
+                        echo "<p><a href=\"index.php?page=galeria\">Galeria imágenes</a></p>";
                     echo "</form>";
                 echo "</div>";
             echo "</div>";
-            echo "<div id='ejercicio'>";
+            echo "<div id=\"ejercicio\">";
                 echo "<p><b>Ejercicio : </b>";
                 if(isset($_GET["page"])){
                     switch($_GET["page"]){
