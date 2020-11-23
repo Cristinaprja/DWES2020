@@ -17,7 +17,7 @@ function crearTablero($tablero, $filas, $columnas){
     for($i=0; $i<$filas; $i++){
         array_push($tablero, array());
         for($j=0; $j<$columnas; $j++){
-            array_push($tablero[$i], "0");
+            array_push($tablero[$i], array("valor" => "0", "visible" => 0));
         }
     }
     return $tablero;
@@ -54,20 +54,21 @@ function ponerBombas($tablero, $bombas, $filas, $columnas){
     do{
         $fRandom = rand(0, $filas - 1);
         $cRandom = rand(0, $columnas - 1);
-        if($tablero[$fRandom][$cRandom] == "0"){
-            $tablero[$fRandom][$cRandom] = "*";
+        if($tablero[$fRandom][$cRandom]["valor"] == "0"){
+            $tablero[$fRandom][$cRandom]["valor"] = "*";
             $bombasColocadas++;
         }
     }while($bombasColocadas < $bombas);
 
     for($i=0; $i<$filas; $i++){
         for($j=0; $j<$columnas; $j++){
-            if($tablero[$i][$j] != "*"){
+            echo $tablero[$i][$j]["valor"];
+            if($tablero[$i][$j]["valor"] != "*"){
                 for($k=$i-1; $k<=($i+1); $k++){
                     for($l=$j-1; $l<=($j+1); $l++){
                         if($k >= 0 && $l >= 0 && $k < $filas && $l < $columnas){
-                            if($tablero[$k][$l] == "*"){
-                                $tablero[$i][$j]++;
+                            if($tablero[$k][$l]["valor"] == "*"){
+                                $tablero[$i][$j]["valor"]++;
                             }
                         }
                     }
@@ -87,7 +88,7 @@ function imprimirTablero($tablero){
     foreach($tablero as $fila => $columna){
         echo "<tr>";
         foreach($columna as $key => $value){
-            echo "<td>$value</td>";
+            echo "<td>$value[valor]</td>";
         }
         echo "</tr>";
     }
@@ -95,26 +96,19 @@ function imprimirTablero($tablero){
 }
 
 /**
- * Función para
+ * Función para imprimir el tablero visible
+ * 
  */
-function imprimirTableroVisible($tablero, $tableroVisible, $filas, $columnas){
+function imprimirTableroJuego($tablero, $filas, $columnas){
     echo "<table border=\"1px solid black\">";
     for($i=0; $i < $filas; $i++) {
         echo "<tr>";
         for($j = 0; $j < $columnas; $j++) {
             echo "<td>";
-            if ($tableroVisible[$i][$j] == 1) {  //Si la casilla ya está visible
-                if ($tablero[$i][$j] == 0) { 
-                    echo "0"; //Mostramos vacío
-                }
-                else { 
-                    echo $tablero[$fila][$columna]; //Mostramos minas adyacentes.
-                }
-            }
-            else { // Casilla no visible
-                echo "<a href=\"index.php?page=buscaminas&fila=$i&columna=$j\">";	 //Mostramos enlace			
-                echo $tableroVisible[$i][$j];
-                echo "</a>";				
+            if ($tablero[$i][$j]["visible"] == 1) {
+                echo $tablero[$i][$j]["valor"];
+            }else {
+                echo "<a href=\"index.php?page=buscaminas&fila=$i&columna=$j\"><input type=\"submit\" value=\"\"/></a>";				
             }
             echo "</td>";
         }
@@ -123,47 +117,46 @@ function imprimirTableroVisible($tablero, $tableroVisible, $filas, $columnas){
     echo "</table>";
 }
 
-function checkVictoria($tableroVisible, $filas, $columnas, $bombas){
+function checkVictoria($tablero, $filas, $columnas, $bombas){
     $hasGanado = false;
-	$numOcultos = 0;
-	$numVisibles = 0;
-	foreach ($tableroVisible as $ind=>$valF) {
-        foreach ($valF as $ind2=>$valor) {
-            if ($valor==0) {
-		        $numOcultos++;
-		    }else {
-		        $numVisibles++;
-		    }
+	foreach ($tablero as $array => $filas) {
+        foreach ($filas as $columnas=>$casillas) {
+            if($casillas["visible"] == 0 && $casillas["valor"] !== "*"){
+                return ;
+            }
 	    }
 	}
-    if ($numVisibles == $filas * $columnas - $bombas) {
-        $hasGanado = true;
-    }
+    $hasGanado = true;
     return $hasGanado;
 }
 
-function clickCasilla($tablero, $tableroVisible, $f, $c, $filas, $columnas, $bombas){
-    if ($tableroVisible[$f][$c] == 0) {
-		$tableroVisible[$f][$c] = 1;
-		if ($tablero[$f][$c] === "*"){
-	        return "Bomba";
-	    }else {
-		    if (checkVictoria($tableroVisible, $filas, $columnas, $bombas)){
-		        /*Detapadas todas las casillar; break recursividad*/
-		    	return 1;
-		    }else {
-		        /*Si no hay minas cercanas */
-		        if ($tablero[$f][$c]==0){
-                // $tableroVisible[$f][$c] = $tablero[$f][$c];
-			    /*Recorre las casillas cercanas y tambien las ejecuta*/
-                    for ($i=max(0, $f-1); $i <= min($f-1,$f+1);$i++){
-                        for ($j=max(0,$c-1);$j <= min($c-1,$c+1);$j++){
-                            clickCasilla($tablero, $tableroVisible, $f, $c, $filas, $columnas, $bombas);
+function clickCasilla($tablero, $f, $c, $filas, $columnas, $bombas){
+    if(!$_SESSION["finPartida"]){
+        if ($tablero[$f][$c]["visible"] == 0) {
+            $tablero[$f][$c]["visible"] = 1;
+            echo "cambiado: ".$tablero[$f][$c]["visible"];
+            if ($tablero[$f][$c]["valor"] == "*"){
+                $_SESSION["finPartida"] = true;
+                echo "Has perdido";
+            }else {
+                if (checkVictoria($tablero, $filas, $columnas, $bombas)){
+                    echo "Has ganado";
+                    $_SESSION["finPartida"] = true;
+                }else {
+                    if ($tablero[$f][$c]["valor"]==0){
+                        for($k=$f-1; $k<=($f+1); $k++){
+                            for($l=$c-1; $l<=($c+1); $l++){  
+                                if($k >= 0 && $l >= 0 && $k < $filas && $l < $columnas){
+                                    echo "aa";
+                                    $tablero = clickCasilla($tablero, $k, $l, $filas, $columnas, $bombas);
+                                }
+                            }
                         }
                     }
-			    }
-		    }
-	    }
+                }
+            }
+        }
     }
+    return $tablero;
 }
 ?>
