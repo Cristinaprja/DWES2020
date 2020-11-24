@@ -11,5 +11,6 @@ echo "<ul>
         <li><a href='/pages/sesiones/index.php'>Sesiones</a></li>
         <li><a href='/pages/autentificacion/index.php'>Autentificación</a></li>
         <li><a href='/pages/ficheros/index.php'>Ficheros</a></li>
+        <li><a href='/pages/objetos/index.php'>Objetos</a></li>
     </ul>";
 ?>

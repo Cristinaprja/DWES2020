@@ -44,6 +44,9 @@
         <div id="menu"><a href="pages/ficheros/index.php">Ficheros<br>
             <img src="images/ficheros.png" width="150px"></img></a>
         </div>
+        <div id="menu"><a href="pages/objetos/index.php">Objetos<br>
+            <img src="images/objetos.jpg" width="150px"></img></a>
+        </div>
     </main>
     <br>
     <footer>
