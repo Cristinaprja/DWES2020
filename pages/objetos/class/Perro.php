@@ -40,5 +40,15 @@ class Perro{
     public function getInteligencia(){
         return $this->inteligneica;
     }
+
+    //Metodos para los botones
+    public function jugar(){
+        $this->peso--;
+        $this->animo = "feliz";
+    }
+    public function comer(){
+        $this->peso++;
+        $this->animo = "feliz";
+    }
 }
 ?>
