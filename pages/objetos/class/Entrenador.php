@@ -6,13 +6,13 @@
  */
 class Entrenador{
     public $nombre;
-    public $formacion;
     public $imagen;
+    public $formacion;
 
     public function __construct($arrayDatos){
         $this->nombre = $arrayDatos["nombre"];
-        $this->formacion = $arrayDatos["formacion"];
         $this->imagen = $arrayDatos["imagen"];
+        $this->formacion = $arrayDatos["formacion"];
     }
     public function setFormacion($formacion){
         $this->formacion = $formacion;

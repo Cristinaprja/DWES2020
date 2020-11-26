@@ -9,7 +9,7 @@ class Perro{
     public $imagen;
     public $raza;
     public $peso;  /**El peso puede ser entre 5kg y 50kg */
-    public $animo; /**Feliz, triste, hambriento */
+    public $animo; /**Feliz, triste*/
     public $inteligencia; /**Malo, regular, bueno y muy bueno */
     public $habilidades;
     

@@ -29,7 +29,7 @@ echo "<p><input type=\"submit\" name=\"nuevoEntrenador\" value=\"Nuevo Entrenado
 echo "<p><input type=\"submit\" name=\"acceder\" value=\"Acceder academia canina\"/></p>";
 echo "</form>";
 
-//Control de botones principales que te llevan a formularios de creacion o a la academia
+/** Control de botones principales que te llevan a formularios de creacion o a la academia */
 if(isset($_POST["nuevoPerro"])){
     echo "<h3>Formulario nuevo perro</h3>";
     echo "<form action=\"index.php?page=chips\" method=\"post\" enctype=\"multipart/form-data\">";
@@ -59,53 +59,97 @@ if(isset($_POST["nuevoPerro"])){
     echo "<input type=\"submit\" name=\"agregarEntrenador\" value=\"Agregar Entrenador\"/>";
     echo "</form>";
 }elseif(isset($_POST["acceder"])){
-    echo "<table>";
-    foreach($_SESSION["arrayPerros"] as $perro){
-        echo "<td>";
-        print_r($perro);
-        $perro->getNombre();
-        echo "<br>";
-            echo "<table border=\"1px solid black\">";
-            foreach($perro as $clave => $valor){
-                echo "<tr><td>";
-                switch($clave){
-                    case "nombre":
-                        $nombre = $valor;
-                        echo $valor;
-                    break;
-                    case "imagen":
-                        $imagen = $valor;
-                        echo "<img src=\"perros/$valor\" width=\"100px\"></img>";
-                    break;
-                    case "raza":
-                        echo "Raza: $valor";
-                    break;
-                    case "peso":
-                        echo "Peso: $valor";
-                    break;
-                    case "inteligencia":
-                        echo "IQ: $valor";
-                    break;
-                    case "habilidades":
-                        echo "Habilidades: ";
-                    break;
-                    case "animo":
-                        echo "Ánimo: $valor";
-                    break;
-                }        
-                echo "</td></tr>";  
+    //entrenar
+    echo "<form action=\"index.php?page=chips\" method=\"post\">";  //con esto no funcionan los botones de jugar y comer
+    
+    //
+        /** Tabla que muestra los perros con sus correspondientes datos y botones */
+        echo "<table>";
+        foreach($_SESSION["arrayPerros"] as $perro){
+            echo "<td>";
+                echo "<table border=\"1px solid black\">";
+                    foreach($perro as $clave => $valor){
+                        echo "<tr><td>";
+                        switch($clave){
+                            case "nombre":
+                                $nombre = $valor;
+                                echo $valor;
+                            break;
+                            case "imagen":
+                                $imagen = $valor;
+                                echo "<img src=\"perros/$valor\" width=\"100px\"></img>";
+                            break;
+                            case "raza":
+                                echo "Raza: $valor";
+                            break;
+                            case "peso":
+                                echo "Peso: $valor";
+                            break;
+                            case "inteligencia":
+                                echo "IQ: $valor";
+                            break;
+                            case "habilidades":
+                                echo "Habilidades: ";
+                            break;
+                            case "animo":
+                                echo "Ánimo: $valor";
+                            break;
+                        }        
+                        echo "</td></tr>";  
+
+                    }
+                    /** Botones para interaccionar con el perro */
+                    echo "<tr><td><a href=\"index.php?page=chips&btnJugar=".$nombre."&imagen=".$imagen."\"><button>Jugar</button></a></td></tr>";  
+                    echo "<tr><td><a href=\"index.php?page=chips&btnComer=".$nombre."&imagen=".$imagen."\"><button>Dar de comer</button></a></td></tr>";
+                    // echo "<tr><td><a href=\"index.php?page=chips&btnEntrenar=".$nombre."&imagen=".$imagen."\"><button>Entrenar</button></a></td></tr>";
+                    
+                    //entrenar
+                    echo "<tr><td>Perro : <input type=\"radio\" name=\"perroElegido\" value=\"".$nombre."\"/></td></tr>";
+                    //
+                echo "</table>";
+            echo "</td>";
+        }
+        echo "</table>";
+
+        /** Tabla que muestra los entrenadores con sus correspondientes datos y botones */
+        echo "<table>";
+            foreach($_SESSION["arrayEntrenadores"] as $entrenador){
+                echo "<td>";
+                echo "<table border=\"1px solid black\">";
+                    foreach($entrenador as $clave => $valor){
+                        echo "<tr><td>";
+                        switch($clave){
+                            case "nombre":
+                                $nombre = $valor;
+                                echo $valor;
+                            break;
+                            case "imagen":
+                                $imagen = $valor;
+                                echo "<img src=\"perros/$valor\" width=\"100px\"></img>";
+                            break;
+                            case "formacion":
+                                echo "Formación: $valor";
+                            break;
+                        }        
+                        echo "</td></tr>";  
+                    }
+                    /** Botones para interaccionar con el entrenador */
+                    echo "<tr><td><a href=\"index.php?page=chips&btnEstudiar=".$nombre."&imagen=".$imagen."\"><button>Jugar</button></a></td></tr>";                      
+                    
+                    //entrenar
+                    echo "<tr><td>Entrenador : <input type=\"radio\" name=\"entrenadorElegido\" value=\"".$nombre."\"/></td></tr>";
+                    //
+                echo "</table>";
+            echo "</td>";
             }
-            //Botones para interaccionar con el perro
-            echo "<tr><td><a href=\"index.php?page=chips&btnJugar=".$nombre."&imagen=".$imagen."\"><button>Jugar</button></a></td></tr>";  
-            echo "<tr><td><a href=\"index.php?page=chips&btnComer=".$nombre."&imagen=".$imagen."\"><button>Dar de comer</button></a></td></tr>";
-            echo "<tr><td><a href=\"index.php?page=chips&btnEntrenar=".$nombre."&imagen=".$imagen."\"><button>Entrenar</button></a></td></tr>";
-            echo "</table>";
-        echo "</td>";
-    }
-    echo "</table>";
+        echo "</table>";
+    //entrenar
+    echo "<input type=\"submit\" name=\"entrenar\" value=\"Entrenar\"/>";
+    echo "</form>"; //comentar para usar los botones jugar y comer
+    //
 }
 
-//Control de botones de formularios para instanciar los objetos
+/** Control de botones de formularios para instanciar los objetos */
 if(isset($_POST["agregarPerro"])){
     if($_FILES["imagen"]["type"] == "image/gif"
         || $_FILES["imagen"]["type"] == "image/jpeg" 
@@ -139,13 +183,12 @@ if(isset($_POST["agregarPerro"])){
         "formacion" => $_POST["formacion"],
         "imagen" => $_FILES["imagen"]["name"],
     );
-    $entrenador = new Entrenador($nuevoEntrenador);
+
     echo "Agregaste un entrenador nuevo";
-    print_r($entrenador); //
-    array_push($_SESSION["arrayEntrenadores"], $entrenador);
+    array_push($_SESSION["arrayEntrenadores"], new Entrenador($nuevoEntrenador));
 }
 
-//Control botones de la tabla de los perros
+/** Control botones de la tabla de los perros */
 if(isset($_GET["btnJugar"])){
     echo $_GET["btnJugar"]. " esta jugando";
     echo "<img src=\"perros/".$_GET["imagen"]."\" width=\"100px\"></img>";
@@ -155,5 +198,17 @@ if(isset($_GET["btnJugar"])){
             $perro->jugar();
         }
     }
+}elseif(isset($_GET["btnComer"])){
+    echo $_GET["btnComer"]. " esta comiendo";
+    echo "<img src=\"perros/".$_GET["imagen"]."\" width=\"100px\"></img>";
+
+    foreach($_SESSION["arrayPerros"] as $perro){
+        if($perro->getNombre() == $_GET["btnComer"]){
+            $perro->comer();
+        }
+    }
 }
+// elseif(isset($_GET["btnEntrenar"])){
+
+// }
 ?>
