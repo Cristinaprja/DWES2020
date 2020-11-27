@@ -17,5 +17,11 @@ class Entrenador{
     public function setFormacion($formacion){
         $this->formacion = $formacion;
     }
+    public function getNombre(){
+        return $this->nombre;
+    }
+    public function getFormacion(){
+        return $this->formacion;
+    }
 }
 ?>

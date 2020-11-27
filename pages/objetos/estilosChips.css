@@ -1,0 +1,16 @@
+.tdPerro{
+    padding: 2px;
+    width: 120px;
+    text-align: center;
+}
+.tdPerro img {
+    width: 100%;
+}
+.tdEntrenador{
+    padding: 2px;
+    width: 120px;
+    text-align: center;
+}
+.tdEntrenador img{
+    width: 100%;
+}

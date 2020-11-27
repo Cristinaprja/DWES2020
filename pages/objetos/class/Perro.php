@@ -11,7 +11,7 @@ class Perro{
     public $peso;  /**El peso puede ser entre 5kg y 50kg */
     public $animo; /**Feliz, triste*/
     public $inteligencia; /**Malo, regular, bueno y muy bueno */
-    public $habilidades;
+    public $habilidades = array();
     
     public function __construct($arrayDatos){
         $this->nombre = $arrayDatos["nombre"];
@@ -49,6 +49,18 @@ class Perro{
     public function comer(){
         $this->peso++;
         $this->animo = "feliz";
+    }
+    public function entrenamientoBasico(){
+        $this->inteligencia++;
+        array_push($this->habilidades, "Dar la pata");
+    }
+    public function entrenamientoIntermedio(){
+        $this->inteligencia++;
+        array_push($this->habilidades, "Chocar los cinco");
+    }
+    public function entrenamientoAvanzado(){
+        $this->inteligencia++;
+        array_push($this->habilidades, "Arrastrarse");
     }
 }
 ?>
