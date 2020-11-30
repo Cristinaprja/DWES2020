@@ -152,7 +152,7 @@ if(isset($_POST["nuevoPerro"])){
             echo "<input type=\"submit\" name=\"btnEntrenar\" value=\"Entrenar\"/>";
         echo "</form>";
     }else{
-        echo "Academia vacía";
+        echo "<span>Academia vacía</span>";
     }
 }
 
@@ -197,12 +197,16 @@ if(isset($_POST["agregarPerro"])){
 
 /** Control botones de la tabla de los perros */
 if(isset($_POST["btnJugar"])){
-    echo $_POST["nombrePerro"]." está jugando<br>";
-    echo "<img src=\"perros/".$_POST["imgPerro"]."\" width=\"100px\"></img>";
-
+    echo "<img src=\"perros/".$_POST["imgPerro"]."\" width=\"100px\"></img><br>";
+    
     foreach($_SESSION["arrayPerros"] as $perro){
         if($perro->getNombre() == $_POST["nombrePerro"]){
-            $perro->jugar();
+            if($perro->getPeso() == 1){
+                echo "<span>El perro ".$perro->getNombre()." no puede jugar más, necesita comer</span>";
+            }else{
+                echo $_POST["nombrePerro"]." está jugando";
+                $perro->jugar();
+            }
         }
     }
 
@@ -287,7 +291,7 @@ if(isset($_POST["btnEntrenar"])){
             }
         }
     }else{
-        echo "<span color=\"red\">Debes elegir un perro y un entrenador para poder entrenar</span>";
+        echo "<span>Debes elegir un perro y un entrenador para poder entrenar</span>";
     }
 }
 ?>
