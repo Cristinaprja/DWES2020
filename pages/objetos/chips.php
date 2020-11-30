@@ -201,7 +201,7 @@ if(isset($_POST["btnJugar"])){
     
     foreach($_SESSION["arrayPerros"] as $perro){
         if($perro->getNombre() == $_POST["nombrePerro"]){
-            if($perro->getPeso() == 1){
+            if($perro->getPeso() == 5){
                 echo "<span>El perro ".$perro->getNombre()." no puede jugar más, necesita comer</span>";
             }else{
                 echo $_POST["nombrePerro"]." está jugando";
@@ -245,7 +245,6 @@ if(isset($_POST["btnEntrenar"])){
         echo $_POST["entrenadorElegido"]." está entrenando al perrito ".$_POST["perroElegido"]."<br>";
         echo "<img src=\"entrenando.jpeg\" width=\"150px\"/>";
 
-        $nivelEntrenador = "";
         foreach($_SESSION["arrayEntrenadores"] as $entrenador){
             if($entrenador->getNombre() == $_POST["nombreEntrenador"]){
                 $nivelEntrenador = $entrenador->getFormacion();
