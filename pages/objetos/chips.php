@@ -89,8 +89,9 @@ if(isset($_POST["nuevoPerro"])){
                                     break;
                                     case "habilidades":
                                         echo "Habilidades: ".count($valor)."<br>";
-                                        foreach($valor as $habilidad){
-                                            echo $habilidad;
+                                        foreach($valor as $habilidad => $value){
+                                            foreach($value as $value2)
+                                            echo $value2."<br>";
                                         }
                                     break;
                                     case "animo":
@@ -246,18 +247,41 @@ if(isset($_POST["btnEntrenar"])){
                 $nivelEntrenador = $entrenador->getFormacion();
             }
         }
-
         foreach($_SESSION["arrayPerros"] as $perro){
             if($perro->getNombre() == $_POST["nombrePerro"]){
                 switch($nivelEntrenador){
-                    case "Básica":
-                        $perro->entrenamientoBasico();
+                    case "basica":
+                        if(!empty($perro->getHabilidades())){
+                            foreach($perro->getHabilidades() as $array => $habilidad){
+                                foreach($habilidad as $valor){
+                                    ($valor == "Dar la pata") ? $perro->aumentarInteligencia() : $perro->entrenamientoBasico();
+                                }
+                            }
+                        }else{
+                            $perro->entrenamientoBasico();
+                        }
                     break;
-                    case "Intermedia":
-                        $perro->entrenamientoIntermedio();
+                    case "intermedia":
+                        if(!empty($perro->getHabilidades())){
+                            foreach($perro->getHabilidades() as $array => $habilidad){
+                                foreach($habilidad as $valor){
+                                    ($valor == "Chocar los cinco") ? $perro->aumentarInteligencia() : $perro->entrenamientoIntermedio();
+                                }
+                            }
+                        }else{
+                            $perro->entrenamientoBasico();
+                        }
                     break;
-                    case "Avanzada":
-                        $perro->entrenamientoAvanzado();
+                    case "avanzada":
+                        if(!empty($perro->getHabilidades())){
+                            foreach($perro->getHabilidades() as $array => $habilidad){
+                                foreach($habilidad as $valor){
+                                    ($valor == "Arrastrarse") ? $perro->aumentarInteligencia() : $perro->entrenamientoAvanzado();
+                                }
+                            }
+                        }else{
+                            $perro->entrenamientoBasico();
+                        }
                     break;
                 }
             }

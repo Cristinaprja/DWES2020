@@ -40,6 +40,9 @@ class Perro{
     public function getInteligencia(){
         return $this->inteligneica;
     }
+    public function getHabilidades(){
+        return $this->habilidades;
+    }
 
     //Metodos para los botones
     public function jugar(){
@@ -50,17 +53,20 @@ class Perro{
         $this->peso++;
         $this->animo = "feliz";
     }
+    public function aumentarInteligencia(){
+        $this->inteligencia++;
+    }
     public function entrenamientoBasico(){
         $this->inteligencia++;
-        array_push($this->habilidades, "Dar la pata");
+        array_push($this->habilidades, array("Dar la pata"));
     }
     public function entrenamientoIntermedio(){
         $this->inteligencia++;
-        array_push($this->habilidades, "Chocar los cinco");
+        array_push($this->habilidades, array("Chocar los cinco"));
     }
     public function entrenamientoAvanzado(){
         $this->inteligencia++;
-        array_push($this->habilidades, "Arrastrarse");
+        array_push($this->habilidades, array("Arrastrarse"));
     }
 }
 ?>
