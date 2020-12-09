@@ -1,4 +1,12 @@
 <?php 
+/**
+* Ejercicio de examen de arrays
+* Utilizando el array de horario, crea un script que genere un documento HTML que incluya una
+* tabla con el horario del curso y leyendas para profesorado y asignaturas. Utiliza una función
+* horarioDia que reciba como parámetro de entrada el día de la semana y devuelva un array con
+* los módulos impartidos ese día.
+* @author Cristina Prieto Jalao
+*/
 $arrayHorario = array(
     "DWES"=>array(
         "nombre"=>"Desarrollo web en entorno servidor",
@@ -66,20 +74,10 @@ $arrayHorario = array(
     )         
 );
 /**
-* Ejercicio de examen de arrays
-* Utilizando el array de horario, crea un script que genere un documento HTML que incluya una
-* tabla con el horario del curso y leyendas para profesorado y asignaturas. Utiliza una función
-* horarioDia que reciba como parámetro de entrada el día de la semana y devuelva un array con
-* los módulos impartidos ese día.
-* @author Cristina Prieto Jalao
-*/
-// include "funciones/funciones.php";
-// include "config/parameters.php";
-//Funciones
-
-/**
- * Funcion que recibe como parametros una cadena con el dia ("Lunes","Martes",...) y el horario.
- * Devuelve un array con las asignaturas de ese día ordenadas mediante su Ã­ndice (ascendente 0-5).
+ * Función evuelve un array con las asignaturas del día pasado por parámetro.
+ * @param dia día del que queremos saber las asignaturas
+ * @param arrayHorario array con el horario de la semana
+ * @return arrayAsignaturas array con las asignaturas de ese día
  */
 function horarioDia($dia,$arrayHorario){
     $arrayAsignaturas = [];
@@ -112,10 +110,11 @@ function horarioDia($dia,$arrayHorario){
     return $arrayAsignaturas;
 }
 /**
- * Funcion que crea la tabla y la muestra en pantalla.
+ * Funcion que crea la tabla para el horario
+ * @param arrayHorario
  */
 function crearHorario($arrayHorario){
-    $cabecera = ["Hora", "Lunes","Martes","Miercoles","Jueves","Viernes"];
+    $cabecera = ["Hora", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
     echo "<table border=\"1px solid black\">";
         echo "<tr>";
             foreach($cabecera as $c){
@@ -134,7 +133,8 @@ function crearHorario($arrayHorario){
     echo "</table>";
 }
 /**
- * Funcion que muestra la leyenda sobre las asignaturas y profesores
+ * Funcion que muestra la leyenda sobre las asignaturas y los profesores
+ * @param arrayHorario
  */
 function infoHorario($arrayHorario){
     $nombreAsig = "";
@@ -156,16 +156,11 @@ function infoHorario($arrayHorario){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?php echo "<title>Examen Horario</title>" ?>
-</head>
+    </head>
 <body>
-    <?php echo "<p>Cristina Prieto Jalao</p>";?>
-    <section>
-        <?php
-           crearHorario($arrayHorario);
-           infoHorario($arrayHorario);
-        ?>
-    </section>
-<?php    echo "<br/><a href="."../../../verCodigo.php?src=".str_replace("&bsol;","",__FILE__)."><button>Ver código</button></a>"; ?></footer> 
+    <?php
+        crearHorario($arrayHorario);
+        infoHorario($arrayHorario);
+    ?>
 </body>
 </html>
