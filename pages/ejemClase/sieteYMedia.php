@@ -91,7 +91,6 @@ function comprobarEstado($plantarse){
         <?php
         if(isset($_SESSION["estado"])){
             if(isset($_GET["pagina"])){
-                $plantarse = false;
                 switch($_GET["pagina"]){
                     case "reinicio":
                         $_SESSION["puntosJugador"] = 0;
@@ -100,11 +99,10 @@ function comprobarEstado($plantarse){
                     break;
                     case "nuevaCarta":
                         nuevaCarta();
-                        comprobarEstado($plantarse);
+                        comprobarEstado(false);
                     break;
                     case "plantarse":
-                        $plantarse = true;
-                        comprobarEstado($plantarse);
+                        comprobarEstado(true);
                     break;
                 }
             }

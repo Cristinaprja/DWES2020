@@ -1,10 +1,7 @@
 <?php 
 /**
 * Ejercicio de examen de arrays
-* Utilizando el array de horario, crea un script que genere un documento HTML que incluya una
-* tabla con el horario del curso y leyendas para profesorado y asignaturas. Utiliza una función
-* horarioDia que reciba como parámetro de entrada el día de la semana y devuelva un array con
-* los módulos impartidos ese día.
+* Utilizando el array de horario, crea una tabla con el horario del curso y leyendas para profesorado y asignaturas. Utiliza una función
 * @author Cristina Prieto Jalao
 */
 $arrayHorario = array(
