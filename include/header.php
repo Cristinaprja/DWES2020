@@ -12,5 +12,6 @@ echo "<ul>
         <li><a href='/pages/autentificacion/index.php'>Autentificación</a></li>
         <li><a href='/pages/ficheros/index.php'>Ficheros</a></li>
         <li><a href='/pages/objetos/index.php'>Objetos</a></li>
+        <li><a href='/pages/bbdd/index.php'>Base de Datos</a></li>
     </ul>";
 ?>
