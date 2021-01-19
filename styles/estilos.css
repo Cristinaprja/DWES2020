@@ -1,3 +1,9 @@
+body{
+    background-color:#2ECCFA;
+}
+#menu{
+    background-color: white;
+}
 header h1 {
     text-align: center;
     text-decoration: underline;
@@ -9,10 +15,11 @@ header ul{
     padding: 15px;
     flex-wrap: wrap;
     line-height : 35px;
+    background-color: #29b0da;
 }
 header li {
     list-style: none;
-    padding: 5px;  
+    padding: 5px;
 }
 header a {
     text-decoration: none;
@@ -21,6 +28,8 @@ header a {
     font-size: 20px;
     text-align: center;
     padding: 10px;
+    background-color: white;
+    color: black;
 }
 main {
     display: flex;
@@ -47,8 +56,12 @@ main a:hover{
     text-decoration-line: underline;
     text-decoration-style: wavy;
 }
+#listado a{
+    color: black;
+}
 #ejercicio {
     border: 1px solid black;
+    background-color: white;
 }
 #enlace{
     text-align: center;
@@ -83,6 +96,8 @@ footer{
     justify-content: start;
     padding: 10px;
     border: 1px solid black;
+    background-color: black;
+    color: white;
 }
 footer section {
     display: flex;
