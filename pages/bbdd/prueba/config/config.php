@@ -3,5 +3,5 @@
     define("DBUSER", "superheroes");
     define("DBPASS", "superheroes");
     define("DBNAME", "bd_superheroes");
-    define("DBPORT",3306);	
+    define("DBPORT", 3306);	
 ?>

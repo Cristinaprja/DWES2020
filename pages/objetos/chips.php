@@ -61,7 +61,6 @@ if(isset($_POST["nuevoPerro"])){
 }elseif(isset($_POST["acceder"])){
     if(!empty($_SESSION["arrayPerros"]) || !empty($_SESSION["arrayEntrenadores"])){
         echo "<form action=\"index.php?page=chips\" method=\"post\">";
-
             /** Tabla que muestra los perros con sus correspondientes datos y botones */
             echo "<table>";
                 foreach($_SESSION["arrayPerros"] as $perro){
