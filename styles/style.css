@@ -1,9 +1,3 @@
-body{
-    background-color:#2ECCFA;
-}
-#menu{
-    background-color: white;
-}
 header h1 {
     text-align: center;
     text-decoration: underline;
@@ -15,7 +9,6 @@ header ul{
     padding: 15px;
     flex-wrap: wrap;
     line-height : 35px;
-    background-color: #29b0da;
 }
 header li {
     list-style: none;
@@ -28,7 +21,6 @@ header a {
     font-size: 20px;
     text-align: center;
     padding: 10px;
-    background-color: white;
     color: black;
 }
 main {
@@ -61,7 +53,6 @@ main a:hover{
 }
 #ejercicio {
     border: 1px solid black;
-    background-color: white;
 }
 #enlace{
     text-align: center;
