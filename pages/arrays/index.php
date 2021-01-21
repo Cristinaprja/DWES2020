@@ -56,7 +56,6 @@
                             include "continentes.php";
                         break;
                         echo "<div id=\"enlace\">";
-                        e
                     }
                 }
             echo "</div>";

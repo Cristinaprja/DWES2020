@@ -27,7 +27,7 @@
             <img src="images/array.png" width="150px"></img></a>
         </div>
         <div id="menu"><a href="pages/formularios/index.php">Formularios<br>
-            <img src="images/formulario.png" width="150px"></img></a>
+            <img src="images/formulario.PNG" width="150px"></img></a>
         </div>
         <div id="menu"><a href="pages/funciones/index.php">Funciones<br>
             <img src="images/funciones.png" width="150px"></img></a>
@@ -36,13 +36,13 @@
             <img src="images/cookies.jpg" width="150px"></img></a>
         </div>
         <div id="menu"><a href="pages/sesiones/index.php">Sesiones<br>
-            <img src="images/sesiones.png" width="150px"></img></a>
+            <img src="images/sesiones.PNG" width="150px"></img></a>
         </div>
         <div id="menu"><a href="pages/autentificacion/index.php">Autentificación<br>
-            <img src="images/autentificacion.png" width="150px"></img></a>
+            <img src="images/autentificacion.PNG" width="150px"></img></a>
         </div>
         <div id="menu"><a href="pages/ficheros/index.php">Ficheros<br>
-            <img src="images/ficheros.png" width="150px"></img></a>
+            <img src="images/ficheros.PNG" width="150px"></img></a>
         </div>
         <div id="menu"><a href="pages/objetos/index.php">Objetos<br>
             <img src="images/objetos.jpg" width="150px"></img></a>

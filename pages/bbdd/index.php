@@ -18,6 +18,7 @@
                 echo "<div>";
                     echo "<form action='basicos.php' method='post'>";
                         echo "<h2>BASE DE DATOS</h2>";
+                        echo "<p><a href='index.php?page=basico'>Ejercicio básico</a></p>";
                         echo "<p><a href='index.php?page=agendaContactos'>Agenda Contactos</a></p>";
                     echo "</form>";
                 echo "</div>";
@@ -26,9 +27,9 @@
                 echo "<p><b>Ejercicio : </b>";
                 if(isset($_GET["page"])){
                     switch($_GET["page"]){
-                        case "agendaContactos":
-                            echo "Agenda de Contactos</p>"; 
-                            include "agendaContactos.php";
+                        case "basico":
+                            echo "Ejercicio básico</p>"; 
+                            include "prueba/index.php";
                         break;
                     }
                 }

@@ -4,24 +4,24 @@
  */
 include "class/Superheroe.php";
 include "config/config.php";
-
+echo "<u>Superheroes</u>";
 $sh = Superheroe::getInstancia();
 $superheroes = $sh->getAll();
 
-echo "<form action=\"index.php\" method=\"post\">";
+echo "<form action=\"index.php?page=basico\" method=\"post\">";
     echo "<p><input type=\"text\" name=\"busqueda\">";
     echo "<input type=\"submit\" name=\"btnBuscar\" value=\"Buscar\">";
-    echo "<a href=\"index.php?btnAdd\">Agregar</a></p>";
+    echo "<a href=\"index.php?page=basico&btnAdd\">Agregar</a></p>";
     echo "<table border=\"1px solid black\">";
-    echo "<th>Nombre</th><th>Velocidad</th>";
-        foreach($superheroes as $valor){
-            echo "<tr>";
-            echo "<td>".$valor["nombre"]."</td>";
-            echo "<td>".$valor["velocidad"]."</td>";
-            echo "<td><a href=\"index.php?btnDel=".$valor["id"]."\">Del</a></td>";
-            echo "<td><a href=\"index.php?btnEdit=".$valor["id"]."&nombre=".$valor["nombre"]."&velocidad=".$valor["velocidad"]."\">Edit</a></td>";
-            echo "</td></tr>";
-        }
+        echo "<th>Nombre</th><th>Velocidad</th>";
+            foreach($superheroes as $valor){
+                echo "<tr>";
+                echo "<td>".$valor["nombre"]."</td>";
+                echo "<td>".$valor["velocidad"]."</td>";
+                echo "<td><a href=\"index.php?page=basico&btnDel=".$valor["id"]."\">Del</a></td>";
+                echo "<td><a href=\"index.php?page=basico&btnEdit=".$valor["id"]."&nombre=".$valor["nombre"]."&velocidad=".$valor["velocidad"]."\">Edit</a></td>";
+                echo "</td></tr>";
+            }
     echo "</table>";
 echo "</form>";
 
@@ -42,7 +42,7 @@ if(isset($_GET["btnEdit"])){
     $id = $_GET["btnEdit"];
     $nombre = $_GET["nombre"];
     $velocidad = $_GET["velocidad"];
-    echo "<form action=\"index.php\" method=\"post\">";
+    echo "<form action=\"index.php?page=basico\" method=\"post\">";
         echo "<input type=\"hidden\" name=\"id\" value=\"$id\">";
         echo "<p><label>Nombre: <input type=\"text\" name=\"nombre\" value=\"$nombre\"></label></p>";
         echo "<p><label>Velocidad: <input type=\"text\" name=\"velocidad\" value=\"$velocidad\"></label></p>";
@@ -56,5 +56,19 @@ if(isset($_POST["editar"])){
                         "id" => $_POST["id"]);
     $sh->edit($datosEditar);
     echo "Has modificado un superheroe";
+}
+if(isset($_GET["btnAdd"])){
+    echo "<form action=\"index.php?page=basico\" method=\"post\">";
+        echo "<input type=\"hidden\" name=\"id\">";
+        echo "<p><label>Nombre: <input type=\"text\" name=\"nombreS\" required></label></p>";
+        echo "<p><label>Velocidad: <input type=\"text\" name=\"velocidadS\" required></label></p>";
+        echo "<input type=\"submit\" name=\"agregar\" value=\"Agregar\">";
+    echo "</form>";
+}
+if(isset($_POST["agregar"])){
+    $datosAgregar = array("nombre" => $_POST["nombreS"],
+                        "velocidad" => $_POST["velocidadS"]);
+    $sh->set($datosAgregar);
+    echo "Has agregado un nuevo superheroe";
 }
 ?>
