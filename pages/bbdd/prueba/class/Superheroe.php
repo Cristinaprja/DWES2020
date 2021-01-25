@@ -83,5 +83,4 @@ class Superheroe extends DBAbstractModel {
         $this->mensaje = 'Superheroe eliminado';
     }
 }
-
 ?>
