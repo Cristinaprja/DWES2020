@@ -1,5 +1,27 @@
 <?php
-include "datos/datos.php";
+// include "datos/datos.php";
+require_once "vendor/autoload.php";
+use App\Models\Blog;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'symblog',
+    'username'  => 'symblog',
+    'password'  => 'symblog',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
+
+$blogs = Blog::all();
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,20 +58,20 @@ include "datos/datos.php";
                     $contador++;
                     echo "<article class=\"blog\">
                         <div class=\"date\">'
-                            <time datetime=\" \">".date_format($blog->getCreated(), 'Y-m-d H:i:s')."</time>
+                            <time datetime=\" \">".date_format($blog["created_at"], 'Y-m-d H:i:s')."</time>
                         </div>
                         <header>
-                            <h2><a href=\"show.php?id=$contador\">".$blog->getTitle()."</a></h2>
+                            <h2><a href=\"show.php?id=$contador\">".$blog["title"]."</a></h2>
                         </header>'
-                        <img src=\"img/".$blog->getImagen()."\" />
+                        <img src=\"img/".$blog["imagen"]."\" />
                         <div class=\"snippet\">
-                            <p>".$blog->getBlog()."</p>'
+                            <p>".$blog["blog"]."</p>'
                             <p class=\"continue\"><a href=\"#\">Continue reading...</a></p>
                         </div>'
                         <footer class=\"meta\">'
                             <p>Comments: <a href=\"#\">Numero</a></p>
-                            <p>Posted by <span class=\"highlight\">".$blog->getAuthor()."</span> at ".date_format($blog->getCreated(), 'H:i:s')."</p>
-                            <p>Tags: <span class=\"highlight\">".$blog->getTags()."</span></p>
+                            <p>Posted by <span class=\"highlight\">".$blog["author"]."</span> at ".date_format($blog["created_at"], 'H:i:s')."</p>
+                            <p>Tags: <span class=\"highlight\">".$blog["tags"]."</span></p>
                         </footer>
                     </article>";
                 }
