@@ -2,24 +2,24 @@
 // include "datos/datos.php";
 require_once "vendor/autoload.php";
 use App\Models\Blog;
-use Illuminate\Database\Capsule\Manager as Capsule;
+// use Illuminate\Database\Capsule\Manager as Capsule;
 
-$capsule = new Capsule;
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'symblog',
-    'username'  => 'symblog',
-    'password'  => 'symblog',
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
+// $capsule = new Capsule;
+// $capsule->addConnection([
+//     'driver'    => 'mysql',
+//     'host'      => 'localhost',
+//     'database'  => 'symblog',
+//     'username'  => 'symblog',
+//     'password'  => 'symblog',
+//     'charset'   => 'utf8',
+//     'collation' => 'utf8_unicode_ci',
+//     'prefix'    => '',
+// ]);
 // Make this Capsule instance available globally via static methods... (optional)
-$capsule->setAsGlobal();
+// $capsule->setAsGlobal();
 
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
-$capsule->bootEloquent();
+// $capsule->bootEloquent();
 
 $blogs = Blog::all();
 ?>
@@ -38,17 +38,26 @@ $blogs = Blog::all();
         <section id="wrapper">
             <header id="header">
                 <div class="top">
+                    <!-- <nav>
+                        <ul class="navigation">
+                            <li><a href="index.php?route=home">Home</a></li>
+                            <li><a href="index.php?route=about">About</a></li>
+                            <li><a href="index.php?route=contact">Contact</a></li>
+                            <li><a href="index.php?route=addBlog">AddBlog</a></li>
+                        </ul>
+                    </nav> -->
                     <nav>
                         <ul class="navigation">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.php">About</a></li>
-                            <li><a href="contact.php">Contact</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/blogs/add">AddBlog</a></li>
                         </ul>
                     </nav>
                 </div>
                 <hgroup>
-                    <h2><a href="index.html">symblog</a></h2>
-                    <h3><a href="index.html">creating a blog in Symfony2</a></h3>
+                    <h2><a href="index.php">symblog</a></h2>
+                    <h3><a href="index.php">creating a blog in Symfony2</a></h3>
                 </hgroup>
             </header>   
             <section class="main-col">
@@ -61,9 +70,9 @@ $blogs = Blog::all();
                             <time datetime=\" \">".date_format($blog["created_at"], 'Y-m-d H:i:s')."</time>
                         </div>
                         <header>
-                            <h2><a href=\"show.php?id=$contador\">".$blog["title"]."</a></h2>
+                            <h2><a href=\"/blogs/show?id=$contador\">".$blog["title"]."</a></h2>
                         </header>'
-                        <img src=\"img/".$blog["imagen"]."\" />
+                        <img src=\"../img/".$blog["imagen"]."\" />
                         <div class=\"snippet\">
                             <p>".$blog["blog"]."</p>'
                             <p class=\"continue\"><a href=\"#\">Continue reading...</a></p>

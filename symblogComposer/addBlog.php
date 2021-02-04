@@ -36,31 +36,32 @@ if(!empty($_POST)){
         <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
         <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
-        <link href="css/screen.css" type="text/css" rel="stylesheet" />
-        <link href="css/sidebar.css" type="text/css" rel="stylesheet" />
-        <link href="css/blog.css" type="text/css" rel="stylesheet" />
+        <link href="../css/screen.css" type="text/css" rel="stylesheet" />
+        <link href="../css/sidebar.css" type="text/css" rel="stylesheet" />
+        <link href="../css/blog.css" type="text/css" rel="stylesheet" />
         <link rel="shortcut icon" href="img/favicon.ico" />
     </head>
     <body>
         <section id="wrapper">
             <header id="header">
-                <div class="top">
-                    <nav>
-                        <ul class="navigation">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.php">About</a></li>
-                            <li><a href="contact.php">Contact</a></li>
-                        </ul>
-                    </nav>
+            <div class="top">
+                <nav>
+                    <ul class="navigation">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/blogs/add">AddBlog</a></li>
+                    </ul>
+                </nav>
                 </div>
                 <hgroup>
-                    <h2><a href="index.html">symblog</a></h2>
-                    <h3><a href="index.html">creating a blog in Symfony2</a></h3>
+                    <h2><a href="index.php">symblog</a></h2>
+                    <h3><a href="index.php">creating a blog in Symfony2</a></h3>
                 </hgroup>
             </header>   
             <section class="main-col">
                 <?php
-                echo "<form action=\"addBlog.php\" method=\"post\">";
+                echo "<form action=\"index.php?route=addBlog\" method=\"post\">";
                     echo "<div><ul>";
                     echo "<li><label>Title </label><input type=\"text\" name=\"title\" /></li>";
                     echo "<li><label>Description </label><textarea name=\"description\"></textarea></li>";
