@@ -1,35 +1,3 @@
-<?php
-// include "datos/datos.php";
-require_once "vendor/autoload.php";
-use App\Models\Blog;
-use Illuminate\Database\Capsule\Manager as Capsule;
-
-$capsule = new Capsule;
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'symblog',
-    'username'  => 'symblog',
-    'password'  => 'symblog',
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
-// Make this Capsule instance available globally via static methods... (optional)
-$capsule->setAsGlobal();
-
-// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
-$capsule->bootEloquent();
-
-if(!empty($_POST)){
-    $blog = new Blog();
-    $blog->title = $_POST["title"];
-    $blog->blog = $_POST["description"];
-    $blog->tags = $_POST["tags"];
-    $blog->author = $_POST["author"];
-    $blog->save();
-}
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -55,13 +23,13 @@ if(!empty($_POST)){
                 </nav>
                 </div>
                 <hgroup>
-                    <h2><a href="index.php">symblog</a></h2>
-                    <h3><a href="index.php">creating a blog in Symfony2</a></h3>
+                    <h2><a href="/">symblog</a></h2>
+                    <h3><a href="/">creating a blog in Symfony2</a></h3>
                 </hgroup>
             </header>   
             <section class="main-col">
                 <?php
-                echo "<form action=\"index.php?route=addBlog\" method=\"post\">";
+                echo "<form action=\"\blogs\add\" method=\"post\">";
                     echo "<div><ul>";
                     echo "<li><label>Title </label><input type=\"text\" name=\"title\" /></li>";
                     echo "<li><label>Description </label><textarea name=\"description\"></textarea></li>";

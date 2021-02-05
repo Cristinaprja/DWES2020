@@ -23,8 +23,8 @@
             </nav>
             </div>
             <hgroup>
-                <h2><a href="index.php">symblog</a></h2>
-                <h3><a href="index.php">creating a blog in Symfony2</a></h3>
+                <h2><a href="/">symblog</a></h2>
+                <h3><a href="/">creating a blog in Symfony2</a></h3>
             </hgroup>
         </header>   
             <section class="main-col">

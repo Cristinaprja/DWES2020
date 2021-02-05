@@ -24,7 +24,7 @@ $capsule->setAsGlobal();
 
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
-// require "../index.php";
+
 
 $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
@@ -34,14 +34,15 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
     $_FILES
 );
 $routerContainer = new RouterContainer();
-// var_dump($request->getUri()->getPath());
 
 $map = $routerContainer->getMap();
-$map->get("index", "/", "../index.php");
-$map->get("addBlog", "/blogs/add", "../addBlog.php");
-$map->get("contact", "/contact", "../contact.php");
-$map->get("about", "/about", "../about.php");
-$map->get("show", "/blogs/show", "../show.php");
+
+$map->get("index", "/", ["controller" => "App\Controllers\IndexController", "action" => "indexAction"]);
+$map->get("contact", "/contact", ["controller" => "App\Controllers\IndexController", "action" => "contactAction"]);
+$map->get("about", "/about", ["controller" => "App\Controllers\IndexController", "action" => "aboutAction"]);
+$map->get("show", "/blogs/show", ["controller" => "App\Controllers\IndexController", "action" => "showAction"]);
+$map->get("addBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
+$map->post("saveBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
 
 $route = $_GET["route"] ?? "";
 
@@ -50,32 +51,12 @@ $route = $matcher->match($request);
 if(!$route){
     echo "No route";
 }else{
-    require $route->handler;
+    $handlerData = $route->handler;
+    $controllerName = $handlerData["controller"];
+    $actionName = $handlerData["action"];
+
+    $controller = new $controllerName;
+    $controller->$actionName($request);
 }
-// var_dump($route);
-
-// echo "Visualizacion del handle";
 // var_dump($route->handler);
-
-// $route = $_GET["route"] ?? "";
-// if(isset($route)){
-//     switch($route){
-//         case "home";
-//         case "";
-//             require "../index.php";
-//         break;
-//         case "about":
-//             require "../about.php";
-//         break;
-//         case "contact":
-//             require "../contact.php";
-//         break;
-//         case "addBlog":
-//             require "../addBlog.php";
-//         break;
-//         case "show":
-//             require "../show.php";
-//         break;
-//     }
-// }
 ?>

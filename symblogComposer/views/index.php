@@ -1,27 +1,6 @@
 <?php
-// include "datos/datos.php";
-require_once "vendor/autoload.php";
+require_once "../vendor/autoload.php";
 use App\Models\Blog;
-// use Illuminate\Database\Capsule\Manager as Capsule;
-
-// $capsule = new Capsule;
-// $capsule->addConnection([
-//     'driver'    => 'mysql',
-//     'host'      => 'localhost',
-//     'database'  => 'symblog',
-//     'username'  => 'symblog',
-//     'password'  => 'symblog',
-//     'charset'   => 'utf8',
-//     'collation' => 'utf8_unicode_ci',
-//     'prefix'    => '',
-// ]);
-// Make this Capsule instance available globally via static methods... (optional)
-// $capsule->setAsGlobal();
-
-// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
-// $capsule->bootEloquent();
-
-$blogs = Blog::all();
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,14 +17,6 @@ $blogs = Blog::all();
         <section id="wrapper">
             <header id="header">
                 <div class="top">
-                    <!-- <nav>
-                        <ul class="navigation">
-                            <li><a href="index.php?route=home">Home</a></li>
-                            <li><a href="index.php?route=about">About</a></li>
-                            <li><a href="index.php?route=contact">Contact</a></li>
-                            <li><a href="index.php?route=addBlog">AddBlog</a></li>
-                        </ul>
-                    </nav> -->
                     <nav>
                         <ul class="navigation">
                             <li><a href="/">Home</a></li>
@@ -56,8 +27,8 @@ $blogs = Blog::all();
                     </nav>
                 </div>
                 <hgroup>
-                    <h2><a href="index.php">symblog</a></h2>
-                    <h3><a href="index.php">creating a blog in Symfony2</a></h3>
+                    <h2><a href="/">symblog</a></h2>
+                    <h3><a href="/">creating a blog in Symfony2</a></h3>
                 </hgroup>
             </header>   
             <section class="main-col">
