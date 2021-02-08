@@ -28,17 +28,18 @@
                 </hgroup>
             </header>   
             <section class="main-col">
-                <?php
-                echo "<form action=\"\blogs\add\" method=\"post\">";
-                    echo "<div><ul>";
-                    echo "<li><label>Title </label><input type=\"text\" name=\"title\" /></li>";
-                    echo "<li><label>Description </label><textarea name=\"description\"></textarea></li>";
-                    echo "<li><label>Tags </label><input type=\"text\" name=\"tags\" /></li>";
-                    echo "<li><label>Author </label><input type=\"text\" name=\"author\" /></li>";
-                    echo "<li><input type=\"submit\" name=\"Enviar consulta\" /></li>";
-                    echo "</ul></div>";
-                echo "</form>";
-                ?>
+                <form>
+                    <div>
+                        <ul>
+                        <li><label>Title</label><input type="text" name="title"/></li>
+                        <li><label>Description</label><textarea name="description"></textarea></li>
+                        <li><label>Tags</label><input type="text" name="tags"/></li>
+                        <li><label>Author</label><input type="text" name="author"/></li>
+                        <li><input type="submit" name="Enviar consulta"/></li>
+
+                        </ul>
+                    </div>
+                </form>
             </section>
             <aside class="sidebar">
                 <section class="section">

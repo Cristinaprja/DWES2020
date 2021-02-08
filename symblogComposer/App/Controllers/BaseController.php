@@ -1,16 +1,18 @@
 <?php
-namespace App\Controller;
+namespace App\Controllers;
 
 class BaseController {
     protected $templateEngine;
     public function __construct(){
-        $loader = new \Twig\Loader\FilesystemLoader("../views");
-        $this->templateEngine = new \Twig\Loader\Environment($loader, array(
-            "debug" => true,
-            "cache" => false,
-        ));
+        $loader = new \Twig\Loader\FilesystemLoader('../views');
+        $this->templateEngine = new \Twig\Environment($loader,array(
+           'debug'=>true,
+           'cache'=>false,
+        ));     
     }
-    public function renderHTML($fileName, $data=[]){
-        return $this->templateEngine->render($fileName, $data);
+    public function renderHTML($filename,$data=[]){
+        return $this->templateEngine->render($filename,$data);
     }
 }
+
+?>

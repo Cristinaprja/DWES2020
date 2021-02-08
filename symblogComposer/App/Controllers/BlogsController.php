@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\Models\Blog;
 
-class BlogsController{
+class BlogsController extends BaseController{
     public function getAddBlogAction($request){
         if($request->getMethod() == "POST"){
             $postData = $request->getParsedBody();
@@ -13,8 +13,7 @@ class BlogsController{
             $blog->author = $postData["author"];
             $blog->save();
         }
-        include "../views/addBlog.php";
-        
+        echo $this->renderHTML("addBlog.twig");
     }
 }
 ?>

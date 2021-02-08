@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ed20a16454c04e54996c2c8b7948a8f5eaf31a7e',
+    'reference' => 'd1f3b229b19b90ee56b2ed944b374789510b7b04',
     'name' => 'usuario/symblog-composer',
   ),
   'versions' => 
@@ -289,6 +289,15 @@
         0 => '2.0',
       ),
     ),
+    'twig/twig' => 
+    array (
+      'pretty_version' => 'v3.2.1',
+      'version' => '3.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f795ca686d38530045859b0350b5352f7d63447d',
+    ),
     'usuario/symblog-composer' => 
     array (
       'pretty_version' => 'dev-master',
@@ -296,7 +305,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ed20a16454c04e54996c2c8b7948a8f5eaf31a7e',
+      'reference' => 'd1f3b229b19b90ee56b2ed944b374789510b7b04',
     ),
     'voku/portable-ascii' => 
     array (

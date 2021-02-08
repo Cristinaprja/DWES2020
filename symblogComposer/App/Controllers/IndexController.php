@@ -5,7 +5,7 @@ use App\Models\Blog;
 class IndexController{
     public function indexAction(){
         $blogs = Blog::all();
-        include "../views/index.php";
+        include "../views/index.twig";
     }
     public function aboutAction(){
         include "../about.php";
