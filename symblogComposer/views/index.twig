@@ -2,17 +2,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+        <title>{% block title %}symblog{% endblock %} - symblog</title>
+        {% block stylesheets %}
         <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
         <link href="css/screen.css" type="text/css" rel="stylesheet" />
         <link href="css/sidebar.css" type="text/css" rel="stylesheet" />
         <link href="css/blog.css" type="text/css" rel="stylesheet" />
+        {% endblock %}
         <link rel="shortcut icon" href="img/favicon.ico" />
     </head>
     <body>
         <section id="wrapper">
             <header id="header">
                 <div class="top">
+                {% block navigation %}
                     <nav>
                         <ul class="navigation">
                             <li><a href="/">Home</a></li>
@@ -21,13 +25,15 @@
                             <li><a href="/blogs/add">AddBlog</a></li>
                         </ul>
                     </nav>
+                {% endblock %}
                 </div>
                 <hgroup>
-                    <h2><a href="/">symblog</a></h2>
-                    <h3><a href="/">creating a blog in Symfony2</a></h3>
+                    <h2>{% block blog_title %}<a href="#">symblog</a>{% endblock %}</h2> 
+                    <h3>{% block blog_tagline %}<a href="">creating a blog in Symfony2</a>{% endblock %}</h3>
                 </hgroup>
             </header> 
         <section class="main-col">
+        {% block body %}
             {% set contador = 0 %}
             {% for blog in blogs %}
                 {% set contador = contador + 1 %}
@@ -50,35 +56,49 @@
                     </footer>
                 <article>
             {% endfor %}
+        %}{% endblock %}
         </section>
         <aside class="sidebar">
+        {% block sidebar %}
             <section class="section">
                 <header>
                     <h3>Tag Cloud</h3>
                 </header>
                 <p class="tags">
-                    <span class="weight-1">magic</span>
-                    <span class="weight-5">symblog</span>
-                    <span class="weight-4">movie</span>
+                    {% for tag, weight in tags %} 
+                        <span class="weight-{{ weight }}">{{ tag }}</span> 
+                    {% else %} 
+                        <p>There are no tags</p> 
+                    {% endfor %}
                 </p>
             </section>
             <section class="section">
                 <header>
                     <h3>Latest Comments</h3>
                 </header>
-                <article class="comment">
-                    <header>
-                        <p class="small"><span class="highlight">Carlos Aguilera</span> commented on
-                        <a href="#">A day with Symfony2</a>
+                {% for comment in latestComments %} 
+                    <article class="comment"> 
+                        <header> 
+                        <p class="small">
+                            <span class="highlight">{{ comment.user }}</span> 
+                            commented on <a href="#', { 'id': comment.blog.id }) }}#comment-{{ comment.id }}"> {{ comment.blog.title }} </a>
+                            <!--em><time datetime="{{ comment.created|date('c') }}">{{ comment.crea-ted|date('Y-m-d h:iA') }}</time></em--> </p>
+                            </header> 
+                            <p>{{ comment.comment }}</p>
                         </p>
-                    </header>
-                        <p>Comentario Usuario</p>
-                </article>
+                    </article>
+                {% else %}
+                    <p>There are no recent comments</p>
+                {% endfor %}
             </section>
+        {% endblock %}
         </aside>
             <div id="footer">
+            {% block footer %}
                 dwes symblog - created by <a href="#">dwes</a>
+            {% endblock %} </div> </section>
             </div>
         </section>
+    {% block javascripts %}{% endblock %} </body> </
     </body>
 </html>
