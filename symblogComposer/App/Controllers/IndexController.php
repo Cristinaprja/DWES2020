@@ -2,10 +2,10 @@
 namespace App\Controllers;
 use App\Models\Blog;
 
-class IndexController{
+class IndexController extends BaseController{
     public function indexAction(){
         $blogs = Blog::all();
-        include "../views/index.twig";
+        echo $this->renderHTML("index.twig", ["blogs" => $blogs]);
     }
     public function aboutAction(){
         include "../about.php";
