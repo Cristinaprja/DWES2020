@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd1f3b229b19b90ee56b2ed944b374789510b7b04',
+    'reference' => '1e8b665e305a6c5a9abeacc4053ac982a2e45dbe',
     'name' => 'usuario/symblog-composer',
   ),
   'versions' => 
@@ -196,6 +196,33 @@ private static $installed = array (
       ),
       'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
     ),
+    'respect/stringifier' => 
+    array (
+      'pretty_version' => '0.2.0',
+      'version' => '0.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59',
+    ),
+    'respect/validation' => 
+    array (
+      'pretty_version' => '2.2.1',
+      'version' => '2.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '51ad23e24c83f222468174861de61fc8bcde9bfb',
+    ),
+    'sokil/php-isocodes' => 
+    array (
+      'pretty_version' => '3.3.3',
+      'version' => '3.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd05d170a554f61ba793e31a78d2b4b3aaa80907f',
+    ),
     'symfony/console' => 
     array (
       'pretty_version' => 'v5.2.2',
@@ -318,7 +345,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'd1f3b229b19b90ee56b2ed944b374789510b7b04',
+      'reference' => '1e8b665e305a6c5a9abeacc4053ac982a2e45dbe',
     ),
     'voku/portable-ascii' => 
     array (
