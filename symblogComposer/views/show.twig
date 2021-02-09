@@ -56,8 +56,8 @@ $blogs = Blog::all();
         </hgroup>
     </header>   
         <section class="main-col">
-
-            <?php
+            {{ path("show.twig") }}
+            {# <?php 
              if(isset($_GET["id"])){
                 $id = $_GET["id"];
                 echo "<article class=\"blog\">
@@ -99,7 +99,7 @@ $blogs = Blog::all();
                         // }
                     // }
             }
-            ?>
+            ?> #}
         </section>
         <aside class="sidebar">
             <section class="section">

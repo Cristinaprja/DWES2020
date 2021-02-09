@@ -1,104 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
-        <title>{% block title %}symblog{% endblock %} - symblog</title>
-        {% block stylesheets %}
-        <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
-        <link href="css/screen.css" type="text/css" rel="stylesheet" />
-        <link href="css/sidebar.css" type="text/css" rel="stylesheet" />
-        <link href="css/blog.css" type="text/css" rel="stylesheet" />
-        {% endblock %}
-        <link rel="shortcut icon" href="img/favicon.ico" />
-    </head>
-    <body>
-        <section id="wrapper">
-            <header id="header">
-                <div class="top">
-                {% block navigation %}
-                    <nav>
-                        <ul class="navigation">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                            <li><a href="/blogs/add">AddBlog</a></li>
-                        </ul>
-                    </nav>
-                {% endblock %}
-                </div>
-                <hgroup>
-                    <h2>{% block blog_title %}<a href="#">symblog</a>{% endblock %}</h2> 
-                    <h3>{% block blog_tagline %}<a href="">creating a blog in Symfony2</a>{% endblock %}</h3>
-                </hgroup>
-            </header> 
-        <section class="main-col">
-        {% block body %}
-            {% set contador = 0 %}
-            {% for blog in blogs %}
-                {% set contador = contador + 1 %}
-                <article class="blog">
-                    <div class="date">
-                        <time datetime=""> {{ blog.created_at|date("F jS \\a\\t g:ia") }} </time>
-                    </div>
-                    <header>
-                        <h2><a href="/blogs/show?id={{contador}}"> {{blog.title}} </a></h2>
-                    </header>
-                    <img src="../public/img/{{blog.imagen}}" />
-                    <div class="snippet">
-                        <p> {{blog.blog}} </p> 
-                        <p class="continue"><a href="#">Contine reading</a></p>
-                    </div>
-                    <footer class="meta">
-                        <p>Comments: <a href="#">Numero</a></p>
-                        <p>Posted by <span class="highlight"> {{blog.author}}</span> at {{ blog.date|date("F jS \\a\\t g:ia") }}</p>
-                        <p>Tags: <span class="highlight"> {{blog.tags}}
-                    </footer>
-                <article>
-            {% endfor %}
-        %}{% endblock %}
-        </section>
-        <aside class="sidebar">
-        {% block sidebar %}
-            <section class="section">
-                <header>
-                    <h3>Tag Cloud</h3>
-                </header>
-                <p class="tags">
-                    {% for tag, weight in tags %} 
-                        <span class="weight-{{ weight }}">{{ tag }}</span> 
-                    {% else %} 
-                        <p>There are no tags</p> 
-                    {% endfor %}
-                </p>
-            </section>
-            <section class="section">
-                <header>
-                    <h3>Latest Comments</h3>
-                </header>
-                {% for comment in latestComments %} 
-                    <article class="comment"> 
-                        <header> 
-                        <p class="small">
-                            <span class="highlight">{{ comment.user }}</span> 
-                            commented on <a href="#', { 'id': comment.blog.id }) }}#comment-{{ comment.id }}"> {{ comment.blog.title }} </a>
-                            <!--em><time datetime="{{ comment.created|date('c') }}">{{ comment.crea-ted|date('Y-m-d h:iA') }}</time></em--> </p>
-                            </header> 
-                            <p>{{ comment.comment }}</p>
-                        </p>
-                    </article>
-                {% else %}
-                    <p>There are no recent comments</p>
-                {% endfor %}
-            </section>
-        {% endblock %}
-        </aside>
-            <div id="footer">
-            {% block footer %}
-                dwes symblog - created by <a href="#">dwes</a>
-            {% endblock %} </div> </section>
+{% extends 'layout.twig' %} 
+{% block body %}
+    {% set contador = 0 %}
+    {% for blog in blogs %}
+        {% set contador = contador + 1 %}
+        <article class="blog">
+            <div class="date">
+                <time datetime=""> {{ blog.created_at|date("F jS \\a\\t g:ia") }} </time>
             </div>
-        </section>
-    {% block javascripts %}{% endblock %} </body> </
-    </body>
-</html>
+            <header>
+                <h2><a href="/blogs/show?id={{contador}}"> {{blog.title}} </a></h2>
+            </header>
+            <img src="../public/img/{{blog.imagen}}" />
+            <div class="snippet">
+                <p> {{blog.blog}} </p> 
+                <p class="continue"><a href="#">Contine reading</a></p>
+            </div>
+            <footer class="meta">
+                <p>Comments: <a href="#">Numero</a></p>
+                <p>Posted by <span class="highlight"> {{blog.author}}</span> at {{ blog.date|date("F jS \\a\\t g:ia") }}</p>
+                <p>Tags: <span class="highlight"> {{blog.tags}}
+            </footer>
+        <article>
+    {% endfor %}
+{% endblock %}

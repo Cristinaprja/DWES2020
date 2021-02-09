@@ -43,6 +43,8 @@ $map->get("about", "/about", ["controller" => "App\Controllers\IndexController",
 $map->get("show", "/blogs/show", ["controller" => "App\Controllers\IndexController", "action" => "showAction"]);
 $map->get("addBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
 $map->post("saveBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
+$map->get("addUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction"]);
+$map->post("saveUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction"]);
 
 $route = $_GET["route"] ?? "";
 
@@ -56,9 +58,10 @@ if(!$route){
     $actionName = $handlerData["action"];
 
     $controller = new $controllerName;
-    $response = $controller->$actionName($request);
+    $controller->$actionName($request);
 
-    echo $response->getBody();
+    // $request = $controller->$actionName($request);
+    // echo $response->getBody();
 }
 // var_dump($route->handler);
 ?>
