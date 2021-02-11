@@ -45,6 +45,8 @@ $map->get("addBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsContro
 $map->post("saveBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
 $map->get("addUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction"]);
 $map->post("saveUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction"]);
+$map->get("formLogin", "/formLogin", ["controller" => "App\Controllers\AuthController", "action" => "formLogin"]);
+$map->post("login", "/formLogin", ["controller" => "App\Controllers\AuthController", "action" => "postLogin"]);
 
 $route = $_GET["route"] ?? "";
 
@@ -59,9 +61,5 @@ if(!$route){
 
     $controller = new $controllerName;
     $controller->$actionName($request);
-
-    // $request = $controller->$actionName($request);
-    // echo $response->getBody();
 }
-// var_dump($route->handler);
 ?>
