@@ -3,6 +3,8 @@ ini_set("display_errors", 1);
 ini_set("display_startup_error", 1);
 error_reporting(E_ALL);
 
+session_start();
+
 require_once "../vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
@@ -41,12 +43,14 @@ $map->get("index", "/", ["controller" => "App\Controllers\IndexController", "act
 $map->get("contact", "/contact", ["controller" => "App\Controllers\IndexController", "action" => "contactAction"]);
 $map->get("about", "/about", ["controller" => "App\Controllers\IndexController", "action" => "aboutAction"]);
 $map->get("show", "/blogs/show", ["controller" => "App\Controllers\IndexController", "action" => "showAction"]);
-$map->get("addBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
-$map->post("saveBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction"]);
-$map->get("addUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction"]);
-$map->post("saveUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction"]);
+$map->get("addBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction", "auth" => true]);
+$map->post("saveBlog", "/blogs/add", ["controller" => "App\Controllers\BlogsController", "action" => "getAddBlogAction", "auth" => true]);
+$map->get("addUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction", "auth" => true]);
+$map->post("saveUser", "/users/add", ["controller" => "App\Controllers\UsersController", "action" => "getAddUserAction", "auth" => true]);
 $map->get("formLogin", "/formLogin", ["controller" => "App\Controllers\AuthController", "action" => "formLogin"]);
 $map->post("login", "/formLogin", ["controller" => "App\Controllers\AuthController", "action" => "postLogin"]);
+$map->get("admin", "/admin", ["controller" => "App\Controllers\AdminController", "action" => "getIndex", "auth" => true]);
+$map->get("logout", "/logout", ["controller" => "App\Controllers\AuthController", "action" => "getLogout", "auth" => true]);
 
 $route = $_GET["route"] ?? "";
 
@@ -59,7 +63,21 @@ if(!$route){
     $controllerName = $handlerData["controller"];
     $actionName = $handlerData["action"];
 
-    $controller = new $controllerName;
-    $controller->$actionName($request);
+    $needsAuth = $handlerData["auth"] ?? false;
+    $sessionUserId = $_SESSION["userId"] ?? null;
+
+    if($needsAuth && !$sessionUserId){
+        header("Location: /login");
+    }else{
+        $controller = new $controllerName;
+        $response = $controller->$actionName($request);
+        foreach($response->getHeaders() as $name => $values){
+            foreach($values as $value){
+                header(sprintf("%s: %s", $name, $value), false);
+            }
+        }
+        // http_response_code($response->getStatusCode());
+        echo $response->getBody();
+    }
 }
 ?>

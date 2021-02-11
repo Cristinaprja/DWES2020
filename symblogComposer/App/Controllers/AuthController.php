@@ -1,10 +1,11 @@
 <?php
 namespace App\Controllers;
 use App\Models\User;
+use Laminas\Diactoros\Response\RedirectResponse;
 
 class AuthController extends BaseController {
     public function formLogin(){
-        echo $this->renderHTML("login.twig");
+        return $this->renderHTML("login.twig");
     }
 
     public function postLogin($request){
@@ -13,14 +14,23 @@ class AuthController extends BaseController {
 
         $user = User::where("mail", $postData["mail"])->first();
         if($user){
-            if(password_verify($postData["pass"], $user->password)){
+            if(password_verify($postData["pass"], $user->pass)){
+                $_SESSION["userId"] = $user->id;
                 $responseMessage = "OK Credentials";
+                return new RedirectResponse("/admin");
             }  else{
-                $responseMessage = "Bad Credentials";
+                echo "poosdata   ".$postData["pass"];
+                echo "user pass  ".$user->pass;
+                $responseMessage = "Bad Credentials 222";
             }
         } else{
             $responseMessage = "Bad Credentials";
         }
-        echo $this->renderHTML("login.twig", ["responseMessage" => $responseMessage]);
+        return $this->renderHTML("login.twig", ["responseMessage" => $responseMessage]);
+    }
+
+    public function getLogout(){
+        unset($_SESSION["userId"]);
+        return new RedirectResponse("/formLogin");
     }
 }

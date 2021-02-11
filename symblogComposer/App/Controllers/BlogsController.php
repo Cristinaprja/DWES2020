@@ -36,7 +36,7 @@ class BlogsController extends BaseController{
                 $responseMessage = $e->getMessage();
             }
         }
-        echo $this->renderHTML('addBlog.twig',['responseMessage'=>$responseMessage]);
+        return $this->renderHTML('addBlog.twig',['responseMessage'=>$responseMessage]);
     }
 }
 ?>

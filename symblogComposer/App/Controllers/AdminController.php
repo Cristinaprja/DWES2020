@@ -4,6 +4,6 @@ use App\Models\Admin;
 
 class AdminController extends BaseController{
     public function getIndex(){
-        echo $this->renderHTML("admin.twig");
+        return $this->renderHTML("admin.twig");
     }
 }

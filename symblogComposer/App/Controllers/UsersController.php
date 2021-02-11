@@ -11,7 +11,7 @@ class UsersController extends BaseController{
             $user->pass = password_hash($postData["pass"],PASSWORD_DEFAULT);
             $user->save();
         }
-        echo $this->renderHTML('addUser.twig');
+        return $this->renderHTML('addUser.twig');
     }
 
 }
