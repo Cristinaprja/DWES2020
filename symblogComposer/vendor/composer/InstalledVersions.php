@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1e8b665e305a6c5a9abeacc4053ac982a2e45dbe',
+    'reference' => '53d1d98a5fc6ee8b6d00727487c868365502126d',
     'name' => 'usuario/symblog-composer',
   ),
   'versions' => 
@@ -41,6 +41,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
+    ),
+    'graham-campbell/result-type' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7e279d2cd5d7fbb156ce46daada972355cea27bb',
     ),
     'illuminate/collections' => 
     array (
@@ -122,6 +131,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd',
+    ),
+    'phpoption/phpoption' => 
+    array (
+      'pretty_version' => '1.7.5',
+      'version' => '1.7.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '994ecccd8f3283ecf5ac33254543eb0ac946d525',
     ),
     'psr/container' => 
     array (
@@ -345,7 +363,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1e8b665e305a6c5a9abeacc4053ac982a2e45dbe',
+      'reference' => '53d1d98a5fc6ee8b6d00727487c868365502126d',
+    ),
+    'vlucas/phpdotenv' => 
+    array (
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b3eac5c7ac896e52deab4a99068e3f4ab12d9e56',
     ),
     'voku/portable-ascii' => 
     array (
