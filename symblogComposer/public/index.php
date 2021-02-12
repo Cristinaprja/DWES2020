@@ -8,16 +8,19 @@ session_start();
 require_once "../vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
-use App\Models\Blog;
 
 $capsule = new Capsule;
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."/..");
+$dotenv->load();
+
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'symblog',
-    'username'  => 'symblog',
-    'password'  => 'symblog',
-    'charset'   => 'utf8',
+    'host'      =>  getenv("DB_HOST"),
+    'database'  =>  getenv("DB_NAME"),
+    'username'  =>  getenv("DB_USER"),
+    'password'  =>  getenv("DB_PASS"),
+    'charset'   =>  'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
 ]);
