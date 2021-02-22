@@ -1,5 +1,7 @@
-<?php 
+<?php
+
 #src/Entity/Affiliate.php:
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,12 +11,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity()
  * @ORM\Table(name="affiliates")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Affiliate
 {
-    public function __construct(){
+
+    // properties
+
+    public function __construct()
+    {
         $this->categories = new ArrayCollection();
     }
+    
     /**
      * @var int
      *
@@ -64,6 +72,7 @@ class Affiliate
      *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="affiliates")
      * @ORM\JoinTable(name="affiliates_categories")
+     * 
      */
     private $categories;
 
@@ -155,4 +164,17 @@ class Affiliate
 
         return $this;
     }
+
+    //Métodos
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
 }
+
+?>

@@ -1,12 +1,11 @@
 <?php
-
 #src/Entity/Category.php:
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Table(name="categories")
@@ -53,6 +52,15 @@ class Category
      * @ORM\ManyToMany(targetEntity="Affiliate", mappedBy="categories")
      */
     private $affiliates;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     *
+     * @ORM\Column(type="string", length=128, unique=true)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -127,7 +135,21 @@ class Category
 
         return $this;
     }
+    /**
+     * @return string|null
+     */
+    public function getSlug() : ?string
+    {
+        return $this->slug;
+    }
 
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
+    }
 
     //Métodos
 
