@@ -2,17 +2,16 @@
    include "config/config.php";
    include "class/DBAbstractModel.php";
    include "class/Usuario.php";
-//    include "class/Serie.php";
+   include "class/Serie.php";
 
    session_start();
    
     if(!isset($_SESSION["perfil"])){
-        // $_SESSION["serie"] = Serie::getInstancia();
+        $_SESSION["serie"] = Serie::getInstancia();
         $_SESSION["usuario"] = Usuario::getInstancia();
         $_SESSION["perfil"]="invitado";
         $_SESSION["mensaje"] = "";
     }
-
     if(isset($_POST["iniciarSesion"])){
         $arrayUsuario = $_SESSION["usuario"]->get($_POST["user"]);
         if(sizeof($arrayUsuario) == 1 && $arrayUsuario[0]["passwd"] == $_POST["pass"]){  
@@ -45,7 +44,6 @@
     <?php
     if($_SESSION["perfil"] == "invitado"){
         include "include/login.php";
-        echo "<input type='submit' value='Darse de alta'>";
     }else{
         echo "<form action='index.php' method='post'>";
             echo "<input type='submit' name='cerrarSesion' value='Cerrar Sesión'>";
@@ -63,6 +61,8 @@
             }else if (($_GET["page"]=="registrado")) {
                 include ("pages/registrado.php"); 
             }
+        } else {
+            include "pages/home.php";
         }
         ?>
     </main>

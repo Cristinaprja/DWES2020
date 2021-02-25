@@ -1,5 +1,4 @@
 <?php
-#src/Entity/Category.php:
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,19 +7,40 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
+ * @ORM\Entity()
  * @ORM\Table(name="categories")
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Category
 {
-
     // properties
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->jobs = new ArrayCollection();
         $this->affiliates = new ArrayCollection();
+    }
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * 
+     * @ORM\Column(type="string", length=128, unique = true)
+     */
+    private $slug;
+
+    /**
+     * @return string/null
+     */
+    public function getSlug() : ?string
+    {
+        return $this->slug;
+    }
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
     }
 
     /**
@@ -42,7 +62,7 @@ class Category
     /**
      * @var Job[]|ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="category", cascade={"remove"})
      */
     private $jobs;
 
@@ -52,15 +72,8 @@ class Category
      * @ORM\ManyToMany(targetEntity="Affiliate", mappedBy="categories")
      */
     private $affiliates;
-
-    /**
-     * @var string
-     *
-     * @Gedmo\Slug(fields={"name"})
-     *
-     * @ORM\Column(type="string", length=128, unique=true)
-     */
-    private $slug;
+    
+    
 
     public function getId(): ?int
     {
@@ -86,6 +99,15 @@ class Category
     {
         return $this->jobs;
     }
+    /**
+      * @return Job[] | ArrayCollection
+      */
+      public function getActiveJobs()
+      {
+        return $this->jobs->filter(function(Job $job) {
+            return $job->getExpiresAt() > new \DateTime() && $job->getActivated();
+        });
+      }
 
     public function addJob(Job $job): self
     {
@@ -99,7 +121,8 @@ class Category
 
     public function removeJob(Job $job): self
     {
-        if ($this->jobs->removeElement($job)) {
+        if ($this->jobs->contains($job)) {
+            $this->jobs->removeElement($job);
             // set the owning side to null (unless already changed)
             if ($job->getCategory() === $this) {
                 $job->setCategory(null);
@@ -129,41 +152,11 @@ class Category
 
     public function removeAffiliate(Affiliate $affiliate): self
     {
-        if ($this->affiliates->removeElement($affiliate)) {
+        if ($this->affiliates->contains($affiliate)) {
+            $this->affiliates->removeElement($affiliate);
             $affiliate->removeCategory($this);
         }
 
         return $this;
     }
-    /**
-     * @return string|null
-     */
-    public function getSlug() : ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     */
-    public function setSlug(string $slug): void
-    {
-        $this->slug = $slug;
-    }
-
-    //Métodos
-
-    /**
-     * @return Job[]|ArrayCollection
-     */
-    public function getActiveJobs()
-    {
-        return $this->jobs->filter(function(Job $job) {
-            return $job->getExpiresAt() > new \DateTime();
-        });
-    }
-
-
 }
-
-?>

@@ -24,8 +24,18 @@
         public function edit($user_data=array()) {
             
         }
-        public function get(){
-
+        public function get($user_data=""){
+            $this->query = "SELECT * FROM usuarios WHERE usuario=:usuario";
+            $this->parametros['usuario']= $user_data;
+            $this->get_results_from_query();
+            $this->close_connection();
+            return $this->rows;
+        }
+        public function getSeries(){
+            $this->query = "SELECT * FROM series ORDER BY numero_reproducciones DESC";
+            $this->get_results_from_query();
+            $this->close_connection();
+            return $this->rows;
         }
         public function set($user_data = array()) {
             foreach ($user_data as $campo=>$valor) {
